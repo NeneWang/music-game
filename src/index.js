@@ -19,69 +19,74 @@ const config = {
 
 new Phaser.Game(config);
 
-function preload() {
 
-  game.load.image('title', 'assets/pics/catastrophi.png');
+function preload ()
+{
+    this.load.image('title', 'assets/pics/catastrophi.png');
 
-  game.load.spritesheet('button', 'assets/buttons/flixel-button.png', 80, 20);
-  game.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
+    this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
 
-  // game.load.audio('sfx', [ 'assets/audio/SoundEffects/fx_mixdown.mp3', 'assets/audio/SoundEffects/fx_mixdown.ogg' ]);
-  game.load.audio('sfx', 'assets/audio/SoundEffects/fx_mixdown.ogg');
+    this.load.bitmapFont('nokia', 'assets/fonts/bitmap/nokia16black.png', 'assets/fonts/bitmap/nokia16black.xml');
 
+    this.load.json('sfx', 'assets/audio/SoundEffects/fx_mixdown.json');
+
+    this.load.audio('sfx', [
+        'assets/audio/SoundEffects/fx_mixdown.ogg',
+        'assets/audio/SoundEffects/fx_mixdown.mp3'
+    ]);
 }
-var fx;
 
-function create() {
+function create ()
+{
+    this.add.image(400, 300, 'title');
 
-	game.add.image(0, 0, 'title');
+    var spritemap = this.cache.json.get('sfx').spritemap;
 
-	//	Here we set-up our audio sprite
-	fx = game.add.audio('sfx');
-    fx.allowMultiple = true;
+    var i = 0;
+    for (var spriteName in spritemap)
+    {
+        if (!spritemap.hasOwnProperty(spriteName))
+        {
+            continue;
+        }
 
-	//	And this defines the markers.
+        makeButton.call(this, spriteName, 680, 115 + i*40);
 
-	//	They consist of a key (for replaying), the time the sound starts and the duration, both given in seconds.
-	//	You can also set the volume and loop state, although we don't use them in this example (see the docs)
+        i++;
+    }
 
-	fx.addMarker('alien death', 1, 1.0);
-	fx.addMarker('boss hit', 3, 0.5);
-	fx.addMarker('escape', 4, 3.2);
-	fx.addMarker('meow', 8, 0.5);
-	fx.addMarker('numkey', 9, 0.1);
-	fx.addMarker('ping', 10, 1.0);
-	fx.addMarker('death', 12, 4.2);
-	fx.addMarker('shot', 17, 1.0);
-	fx.addMarker('squit', 19, 0.3);
+    this.input.on('gameobjectover', function (pointer, button)
+    {
+        setButtonFrame(button, 0);
+    });
+    this.input.on('gameobjectout', function (pointer, button)
+    {
+        setButtonFrame(button, 1);
+    });
+    this.input.on('gameobjectdown', function (pointer, button)
+    {
+        this.sound.playAudioSprite('sfx', button.name);
 
-	//	Make some buttons to trigger the sounds
-	makeButton('alien death', 600, 100);
-	makeButton('boss hit', 600, 140);
-	makeButton('escape', 600, 180);
-	makeButton('meow', 600, 220);
-	makeButton('numkey', 600, 260);
-	makeButton('ping', 600, 300);
-	makeButton('death', 600, 340);
-	makeButton('shot', 600, 380);
-	makeButton('squit', 600, 420);
+        setButtonFrame(button, 2);
 
+    }, this);
+    this.input.on('gameobjectup', function (pointer, button)
+    {
+        setButtonFrame(button, 0);
+    });
 }
-function makeButton(name, x, y) {
 
-    var button = game.add.button(x, y, 'button', click, this, 0, 1, 2);
+function makeButton(name, x, y)
+{
+    var button = this.add.image(x, y, 'button', 1).setInteractive();
     button.name = name;
-    button.scale.set(2, 1.5);
-    button.smoothed = false;
+    button.setScale(2, 1.5);
 
-    var text = game.add.bitmapText(x, y + 7, 'nokia', name, 16);
-    text.x += (button.width / 2) - (text.textWidth / 2);
-
+    var text = this.add.bitmapText(x - 40, y - 8, 'nokia', name, 16);
+    text.x += (button.width - text.width) / 2;
 }
 
-function click(button) {
-
-	fx.play(button.name);
-
+function setButtonFrame(button, frame)
+{
+    button.frame = button.scene.textures.getFrame('button', frame);
 }
-debugger
