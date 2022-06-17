@@ -3,7 +3,23 @@ import Phaser from "phaser";
 class Example extends Phaser.Scene {
   constructor() {
     super();
+
+    this.toggleMap = {
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+      6: false,
+      7: false,
+      8: false,
+      9: false,
+    }
+
   }
+
+  
+
 
   preload() {
     this.load.image('title', 'assets/pics/gms.png');
@@ -99,27 +115,13 @@ class Example extends Phaser.Scene {
     button.name = name;
     button.setScale(.5, .5);
 
-    const text = this.add.bitmapText(x - 40, y - 8, 'nokia', name, 16);
-    text.x += (button.width - text.width) / 2;
   }
 
-  makeButton2(name, x, y) {
-    const button = this.add.image(x, y, 'button', 1)
-      .setInteractive();
-    button.name = name;
-    button.setScale(2, 1.5);
-
-    const text = this.add.bitmapText(x - 40, y - 8, 'nokia', name, 16);
-    text.x += (button.width - text.width) / 2;
-  }
 
   setButtonFrame(button, frame) {
     button.frame = button.scene.textures.getFrame('pic1', frame);
   }
 
-  setButtonFrame2(button, frame) {
-    button.frame = button.scene.textures.getFrame('button', frame);
-  }
 }
 
 const config = {
