@@ -94,12 +94,18 @@ class Example extends Phaser.Scene {
 
     this.input.on('gameobjectout', function (pointer, button) {
       this.setButtonFrame(button, 1);
+      this.leftAsToggled(button)
     }, this);
 
     this.input.on('gameobjectdown', function (pointer, button) {
       // this.sound.playAudioSprite('sfx', button.name);
-      console.log(button.name)
-      musicMap[button.name].play()
+      this.toggleMap[button.name] = !this.toggleMap[button.name]
+      console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} ` )
+      if(this.toggleMap[button.name]){
+        musicMap[button.name].play()
+      }else{
+        musicMap[button.name].pause()
+      }
       this.setButtonFrame(button, 2);
     }, this);
 
@@ -107,6 +113,12 @@ class Example extends Phaser.Scene {
       this.setButtonFrame(button, 0);
     }, this);
 
+  }
+
+   leftAsToggled(button){
+    if(this.toggleMap[button.name]){
+      this.setButtonFrame(button, 2);
+    }
   }
 
   makeButton(name, x, y) {
