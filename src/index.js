@@ -10,7 +10,7 @@ class Example extends Phaser.Scene {
 
     // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
     
-    this.load.spritesheet('button', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic1', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300});
 
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
 
@@ -19,7 +19,6 @@ class Example extends Phaser.Scene {
       'assets/audio/SoundEffects/fx_mixdown.mp3'
     ]);
 
-    this.load.image("img1", "assets/gms/images/1.png")
     this.load.audio("wav1", ["assets/gms/audio/1.wav"])
     this.load.audio("wav2", ["assets/gms/audio/2.wav"])
     this.load.audio("wav3", ["assets/gms/audio/3.wav"])
@@ -95,7 +94,7 @@ class Example extends Phaser.Scene {
   }
 
   makeButton(name, x, y) {
-    const button = this.add.image(x, y, 'button', 1)
+    const button = this.add.image(x, y, 'pic1', 1)
       .setInteractive();
     button.name = name;
     button.setScale(.5, .5);
@@ -115,7 +114,7 @@ class Example extends Phaser.Scene {
   }
 
   setButtonFrame(button, frame) {
-    button.frame = button.scene.textures.getFrame('button', frame);
+    button.frame = button.scene.textures.getFrame('pic1', frame);
   }
 
   setButtonFrame2(button, frame) {
