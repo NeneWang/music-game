@@ -8,7 +8,9 @@ class Example extends Phaser.Scene {
   preload() {
     this.load.image('title', 'assets/pics/gms.png');
 
-    this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
+    // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
+    
+    this.load.spritesheet('button', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300});
 
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
 
@@ -16,28 +18,38 @@ class Example extends Phaser.Scene {
       'assets/audio/SoundEffects/fx_mixdown.ogg',
       'assets/audio/SoundEffects/fx_mixdown.mp3'
     ]);
+
+    this.load.image("img1", "assets/gms/images/1.png")
+    this.load.audio("wav1", ["assets/gms/audio/1.wav"])
   }
 
   create() {
+    let wav1 = this.sound.add("wav1", {loop:true})
     
+    const musicMap = {wav1: this.sound.add("wav1", {loop:true})}
     this.add.image(config.width / 2, config.height / 2, 'title').setScale(.23);
 
     // this.add.image(400, 300, 'title');
-
     const spritemap = this.cache.json.get('sfx').spritemap;
 
     console.log(spritemap)
-    this.sound.playAudioSprite('sfx', 'boss hit');
+    // this.sound.playAudioSprite('1wav');
     // this.makeButton('mew', 680, 115 + i * 40);
 
 
     let i = 0;
+    const division = 3
+
     for (let spriteName in spritemap) {
       if (!spritemap.hasOwnProperty(spriteName)) {
         continue;
       }
-      this.makeButton(spriteName, 680, 115 + i * 40);
-      console.log("Here")
+
+      
+
+      console.log(Math.floor(i/division))
+      this.makeButton(spriteName, config.width/division * (i%division + 1/2),  (Math.floor(i/division ) + .5) * (config.height)/division );
+      
       i++;
     }
 
@@ -51,6 +63,7 @@ class Example extends Phaser.Scene {
 
     this.input.on('gameobjectdown', function (pointer, button) {
       this.sound.playAudioSprite('sfx', button.name);
+      musicMap["wav1"].play()
       this.setButtonFrame(button, 2);
     }, this);
 
@@ -64,7 +77,7 @@ class Example extends Phaser.Scene {
     const button = this.add.image(x, y, 'button', 1)
       .setInteractive();
     button.name = name;
-    button.setScale(2, 1.5);
+    button.setScale(.5, .5);
 
     const text = this.add.bitmapText(x - 40, y - 8, 'nokia', name, 16);
     text.x += (button.width - text.width) / 2;
