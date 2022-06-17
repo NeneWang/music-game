@@ -27,6 +27,14 @@ class Example extends Phaser.Scene {
     // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
     
     this.load.spritesheet('pic1', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic2', 'assets/gms/images/2-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic3', 'assets/gms/images/3-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic4', 'assets/gms/images/4-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic5', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic6', 'assets/gms/images/6-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic7', 'assets/gms/images/7-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic8', 'assets/gms/images/8-spread.png', { frameWidth: 300, frameHeight: 300});
+    this.load.spritesheet('pic9', 'assets/gms/images/9-spread.png', { frameWidth: 300, frameHeight: 300});
 
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
 
@@ -122,16 +130,16 @@ class Example extends Phaser.Scene {
   }
 
   makeButton(name, x, y) {
-    const button = this.add.image(x, y, 'pic1', 1)
+    const button = this.add.image(x, y, 'pic'+name, 1)
       .setInteractive();
     button.name = name;
-    button.setScale(.5, .5);
+    button.setScale(.8, .8);
 
   }
 
 
   setButtonFrame(button, frame) {
-    button.frame = button.scene.textures.getFrame('pic1', frame);
+    button.frame = button.scene.textures.getFrame('pic'+button.name, frame);
   }
 
 }
