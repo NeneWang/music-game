@@ -21,18 +21,38 @@ class Example extends Phaser.Scene {
 
     this.load.image("img1", "assets/gms/images/1.png")
     this.load.audio("wav1", ["assets/gms/audio/1.wav"])
+    this.load.audio("wav2", ["assets/gms/audio/2.wav"])
+    this.load.audio("wav3", ["assets/gms/audio/3.wav"])
+    this.load.audio("wav4", ["assets/gms/audio/4.wav"])
+    this.load.audio("wav5", ["assets/gms/audio/5.wav"])
+    this.load.audio("wav6", ["assets/gms/audio/6.wav"])
+    this.load.audio("wav7", ["assets/gms/audio/7.wav"])
+    this.load.audio("wav8", ["assets/gms/audio/8.wav"])
+    this.load.audio("wav9", ["assets/gms/audio/9.wav"])
   }
 
   create() {
     let wav1 = this.sound.add("wav1", {loop:true})
     
-    const musicMap = {wav1: this.sound.add("wav1", {loop:true})}
+    const musicMap = 
+       {
+        "1": this.sound.add("wav1", {loop:true}),
+        "2": this.sound.add("wav2", {loop:true}),
+        "3": this.sound.add("wav3", {loop:true}),
+        "4": this.sound.add("wav4", {loop:true}),
+        "5": this.sound.add("wav5", {loop:true}),
+        "6": this.sound.add("wav9", {loop:true}),
+        "7": this.sound.add("wav6", {loop:true}),
+        "8": this.sound.add("wav7", {loop:true}),
+        "9": this.sound.add("wav8", {loop:true}),
+        
+        
+      }
     this.add.image(config.width / 2, config.height / 2, 'title').setScale(.23);
 
     // this.add.image(400, 300, 'title');
     const spritemap = this.cache.json.get('sfx').spritemap;
 
-    console.log(spritemap)
     // this.sound.playAudioSprite('1wav');
     // this.makeButton('mew', 680, 115 + i * 40);
 
@@ -62,8 +82,9 @@ class Example extends Phaser.Scene {
     }, this);
 
     this.input.on('gameobjectdown', function (pointer, button) {
-      this.sound.playAudioSprite('sfx', button.name);
-      musicMap["wav1"].play()
+      // this.sound.playAudioSprite('sfx', button.name);
+      console.log(button.name)
+      musicMap[button.name].play()
       this.setButtonFrame(button, 2);
     }, this);
 

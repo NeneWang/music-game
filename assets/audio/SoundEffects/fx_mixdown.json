@@ -4,47 +4,47 @@
     "./assets/audio/SoundEffects/fx_mixdown.mp3"
   ],
   "spritemap": {
-    "alien death": {
+    "1": {
       "start": 1,
       "end": 2,
       "loop": false
     },
-    "boss hit": {
+    "2": {
       "start": 3,
       "end": 3.5,
       "loop": false
     },
-    "escape": {
+    "3": {
       "start": 4,
       "end": 7.2,
       "loop": false
     },
-    "meow": {
+    "4": {
       "start": 8,
       "end": 8.5,
       "loop": false
     },
-    "numkey": {
+    "5": {
       "start": 9,
       "end": 9.1,
       "loop": false
     },
-    "ping": {
+    "6": {
       "start": 10,
       "end": 11,
       "loop": false
     },
-    "death": {
+    "7": {
       "start": 12,
       "end": 16.2,
       "loop": false
     },
-    "shot": {
+    "8": {
       "start": 17,
       "end": 18,
       "loop": false
     },
-    "squit": {
+    "9": {
       "start": 19,
       "end": 19.3,
       "loop": false
