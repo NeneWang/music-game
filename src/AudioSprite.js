@@ -1,10 +1,9 @@
-
-class audioSprite{
-    constructor(title, sprite=null, button=null){
-      this.sprite = sprite;
-      this.title = title
-      this.button = button;
-      this.toggled = false;
-      this.smallSprite;
+class AudioSprite {
+    constructor(title = null, button = null) {
+        this.title = title
+        this.toggled = false;
+        this.smallSprite;
     }
   }
+
+export default AudioSprite

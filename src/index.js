@@ -1,6 +1,6 @@
 
 import Phaser from "phaser";
-import AudioSprite from './AudioSprite'
+import AudioSprite from "./AudioSprite";
 
 class Example extends Phaser.Scene {
   constructor() {
@@ -98,7 +98,7 @@ class Example extends Phaser.Scene {
 
       console.log(Math.floor(i / division))
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
-      const audioSprite = new AudioSprite(spriteName, null, button )
+      new AudioSprite("spriteName")
       i++;
     }
     this.createTrackSprites()
