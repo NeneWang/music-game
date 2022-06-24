@@ -1,5 +1,7 @@
 
 import Phaser from "phaser";
+import AudioSprite from './AudioSprite'
+
 class Example extends Phaser.Scene {
   constructor() {
     super();
@@ -96,7 +98,7 @@ class Example extends Phaser.Scene {
 
       console.log(Math.floor(i / division))
       this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
-      
+
       i++;
     }
     this.createTrackSprites()
@@ -135,7 +137,7 @@ class Example extends Phaser.Scene {
   createTrackSprites() {
     for (let i = 1; i <= 9; i++) {
       this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
-      this.trackSprites[i].visible=false
+      this.trackSprites[i].visible = false
 
     }
   }
@@ -144,7 +146,7 @@ class Example extends Phaser.Scene {
     console.log("Updating sprites")
     for (let i = 1; i <= 9; i++) {
       // this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
-      this.trackSprites[i].visible=this.toggleMap[i]
+      this.trackSprites[i].visible = this.toggleMap[i]
 
     }
 
