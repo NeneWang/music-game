@@ -29,10 +29,10 @@ class Example extends Phaser.Scene {
     this.load.spritesheet('pic2', 'assets/gms/images/2-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic3', 'assets/gms/images/3-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic4', 'assets/gms/images/4-spread.png', { frameWidth: 300, frameHeight: 300 });
-    this.load.spritesheet('pic5', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic5', 'assets/gms/images/8-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic6', 'assets/gms/images/6-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic7', 'assets/gms/images/7-spread.png', { frameWidth: 300, frameHeight: 300 });
-    this.load.spritesheet('pic8', 'assets/gms/images/8-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic8', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic9', 'assets/gms/images/9-spread.png', { frameWidth: 300, frameHeight: 300 });
 
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
