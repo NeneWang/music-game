@@ -89,6 +89,10 @@ class Example extends Phaser.Scene {
       }
 
       
+      musicMap[spriteName].play()
+      musicMap[spriteName].pause()
+
+      
 
       console.log(Math.floor(i/division))
       this.makeButton(spriteName, config.width/division * (i%division + 1/2),  (Math.floor(i/division ) + .5) * (config.height)/division );
@@ -110,7 +114,7 @@ class Example extends Phaser.Scene {
       this.toggleMap[button.name] = !this.toggleMap[button.name]
       console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} ` )
       if(this.toggleMap[button.name]){
-        musicMap[button.name].play()
+        musicMap[button.name].resume()
       }else{
         musicMap[button.name].pause()
       }
