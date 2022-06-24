@@ -97,8 +97,8 @@ class Example extends Phaser.Scene {
 
 
       console.log(Math.floor(i / division))
-      this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
-
+      const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
+      const audioSprite = new AudioSprite(spriteName, null, button )
       i++;
     }
     this.createTrackSprites()
@@ -163,6 +163,7 @@ class Example extends Phaser.Scene {
       .setInteractive();
     button.name = name;
     button.setScale(.8, .8);
+    return button
   }
 
 
