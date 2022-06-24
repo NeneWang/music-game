@@ -138,7 +138,6 @@ class Example extends Phaser.Scene {
       .setInteractive();
     button.name = name;
     button.setScale(.8, .8);
-
   }
 
 
