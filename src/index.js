@@ -16,13 +16,12 @@ class Example extends Phaser.Scene {
       9: false,
     }
 
+    this.trackSprites = [];
+
   }
 
 
-
-
   preload() {
-    this.load.image('title', 'assets/pics/gms.png');
 
     // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
 
@@ -71,7 +70,8 @@ class Example extends Phaser.Scene {
 
 
     }
-    this.add.image(config.width / 2, config.height / 2, 'title').setScale(.23);
+    this.add.image(config.width / 2, config.height - 200 / 2, 'title').setScale(.23);
+
 
     // this.add.image(400, 300, 'title');
     const spritemap = this.cache.json.get('sfx').spritemap;
@@ -95,10 +95,11 @@ class Example extends Phaser.Scene {
 
 
       console.log(Math.floor(i / division))
-      this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height) / division);
-
+      this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
+      
       i++;
     }
+    this.createTrackSprites()
 
     this.input.on('gameobjectover', function (pointer, button) {
       this.setButtonFrame(button, 0);
@@ -112,6 +113,9 @@ class Example extends Phaser.Scene {
     this.input.on('gameobjectdown', function (pointer, button) {
       // this.sound.playAudioSprite('sfx', button.name);
       this.toggleMap[button.name] = !this.toggleMap[button.name]
+      this.updateTrackSprites()
+
+      console.log(this.toggleMap)
       console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} `)
       if (this.toggleMap[button.name]) {
         musicMap[button.name].resume()
@@ -119,7 +123,6 @@ class Example extends Phaser.Scene {
         musicMap[button.name].pause()
       }
 
-      updateTrackSprites()
       this.setButtonFrame(button, 2);
     }, this);
 
@@ -129,11 +132,22 @@ class Example extends Phaser.Scene {
 
   }
 
+  createTrackSprites() {
+    for (let i = 1; i <= 9; i++) {
+      this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
+      this.trackSprites[i].visible=false
+
+    }
+  }
+
   updateTrackSprites() {
     console.log("Updating sprites")
-    for (let i = 0; i < 5; i++) {
-      this.add.image(50, 400, 'pic1', 1)
+    for (let i = 1; i <= 9; i++) {
+      // this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
+      this.trackSprites[i].visible=this.toggleMap[i]
+
     }
+
   }
 
   leftAsToggled(button) {
@@ -160,7 +174,7 @@ const config = {
   type: Phaser.AUTO,
   parent: 'phaser-example',
   width: 700,
-  height: 700,
+  height: 900,
   scene: [Example],
   pixelArt: true,
   audio: {
