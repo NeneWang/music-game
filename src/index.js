@@ -18,23 +18,23 @@ class Example extends Phaser.Scene {
 
   }
 
-  
+
 
 
   preload() {
     this.load.image('title', 'assets/pics/gms.png');
 
     // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
-    
-    this.load.spritesheet('pic1', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic2', 'assets/gms/images/2-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic3', 'assets/gms/images/3-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic4', 'assets/gms/images/4-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic5', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic6', 'assets/gms/images/6-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic7', 'assets/gms/images/7-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic8', 'assets/gms/images/8-spread.png', { frameWidth: 300, frameHeight: 300});
-    this.load.spritesheet('pic9', 'assets/gms/images/9-spread.png', { frameWidth: 300, frameHeight: 300});
+
+    this.load.spritesheet('pic1', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic2', 'assets/gms/images/2-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic3', 'assets/gms/images/3-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic4', 'assets/gms/images/4-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic5', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic6', 'assets/gms/images/6-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic7', 'assets/gms/images/7-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic8', 'assets/gms/images/8-spread.png', { frameWidth: 300, frameHeight: 300 });
+    this.load.spritesheet('pic9', 'assets/gms/images/9-spread.png', { frameWidth: 300, frameHeight: 300 });
 
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
 
@@ -55,22 +55,22 @@ class Example extends Phaser.Scene {
   }
 
   create() {
-    let wav1 = this.sound.add("wav1", {loop:true})
-    
-    const musicMap = 
-       {
-        "1": this.sound.add("wav1", {loop:true}),
-        "2": this.sound.add("wav2", {loop:true}),
-        "3": this.sound.add("wav3", {loop:true}),
-        "4": this.sound.add("wav4", {loop:true}),
-        "5": this.sound.add("wav5", {loop:true}),
-        "6": this.sound.add("wav9", {loop:true}),
-        "7": this.sound.add("wav6", {loop:true}),
-        "8": this.sound.add("wav7", {loop:true}),
-        "9": this.sound.add("wav8", {loop:true}),
-        
-        
-      }
+    let wav1 = this.sound.add("wav1", { loop: true })
+
+    const musicMap =
+    {
+      "1": this.sound.add("wav1", { loop: true }),
+      "2": this.sound.add("wav2", { loop: true }),
+      "3": this.sound.add("wav3", { loop: true }),
+      "4": this.sound.add("wav4", { loop: true }),
+      "5": this.sound.add("wav5", { loop: true }),
+      "6": this.sound.add("wav9", { loop: true }),
+      "7": this.sound.add("wav6", { loop: true }),
+      "8": this.sound.add("wav7", { loop: true }),
+      "9": this.sound.add("wav8", { loop: true }),
+
+
+    }
     this.add.image(config.width / 2, config.height / 2, 'title').setScale(.23);
 
     // this.add.image(400, 300, 'title');
@@ -88,15 +88,15 @@ class Example extends Phaser.Scene {
         continue;
       }
 
-      
+
       musicMap[spriteName].play()
       musicMap[spriteName].pause()
 
-      
 
-      console.log(Math.floor(i/division))
-      this.makeButton(spriteName, config.width/division * (i%division + 1/2),  (Math.floor(i/division ) + .5) * (config.height)/division );
-      
+
+      console.log(Math.floor(i / division))
+      this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height) / division);
+
       i++;
     }
 
@@ -112,12 +112,14 @@ class Example extends Phaser.Scene {
     this.input.on('gameobjectdown', function (pointer, button) {
       // this.sound.playAudioSprite('sfx', button.name);
       this.toggleMap[button.name] = !this.toggleMap[button.name]
-      console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} ` )
-      if(this.toggleMap[button.name]){
+      console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} `)
+      if (this.toggleMap[button.name]) {
         musicMap[button.name].resume()
-      }else{
+      } else {
         musicMap[button.name].pause()
       }
+
+      updateTrackSprites()
       this.setButtonFrame(button, 2);
     }, this);
 
@@ -127,14 +129,21 @@ class Example extends Phaser.Scene {
 
   }
 
-   leftAsToggled(button){
-    if(this.toggleMap[button.name]){
+  updateTrackSprites() {
+    console.log("Updating sprites")
+    for (let i = 0; i < 5; i++) {
+      this.add.image(50, 400, 'pic1', 1)
+    }
+  }
+
+  leftAsToggled(button) {
+    if (this.toggleMap[button.name]) {
       this.setButtonFrame(button, 2);
     }
   }
 
   makeButton(name, x, y) {
-    const button = this.add.image(x, y, 'pic'+name, 1)
+    const button = this.add.image(x, y, 'pic' + name, 1)
       .setInteractive();
     button.name = name;
     button.setScale(.8, .8);
@@ -142,7 +151,7 @@ class Example extends Phaser.Scene {
 
 
   setButtonFrame(button, frame) {
-    button.frame = button.scene.textures.getFrame('pic'+button.name, frame);
+    button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
   }
 
 }
