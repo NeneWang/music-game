@@ -25,6 +25,9 @@ class Example extends Phaser.Scene {
     this.load.spritesheet('pic8', 'assets/gms/images/5-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic9', 'assets/gms/images/9-spread.png', { frameWidth: 300, frameHeight: 300 });
 
+    this.load.spritesheet('mute', 'assets/gms/sprites/mute-sheet.png', { frameWidth: 64, frameHeight: 64 })
+    this.load.spritesheet('solo', 'assets/gms/sprites/headphone-sheet.png', { frameWidth: 64, frameHeight: 64 })
+
     this.load.bitmapFont('nokia', 'assets/fonts/bitmapFonts/nokia16black.png', 'assets/fonts/bitmapFonts/nokia16black.xml');
 
     this.load.audioSprite('sfx', 'assets/audio/SoundEffects/fx_mixdown.json', [
@@ -149,12 +152,12 @@ class Example extends Phaser.Scene {
       const trackSprite = trackSprites[idx]
       if (trackSprite.toggled) {
         activePics++
-        
+
         trackSprite.smallSprite.setX(70 * activePics)
         trackSprite.smallSprite.visible = true;
 
 
-      }else{
+      } else {
         trackSprite.smallSprite.visible = false;
       }
     }
