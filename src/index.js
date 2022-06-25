@@ -60,7 +60,6 @@ class Example extends Phaser.Scene {
 
 
     }
-    this.add.image(config.width / 2, config.height - 200 / 2, 'title').setScale(.23);
 
 
     // this.add.image(400, 300, 'title');
