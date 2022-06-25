@@ -84,17 +84,18 @@ class Example extends Phaser.Scene {
 
 
 
-      console.log(Math.floor(i / division))
+
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
+
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
-      console.log(this.trackSprites[spriteName].audioName)
+
       this.trackSprites[spriteName].audio = musicMap[this.trackSprites[spriteName].audioName]
       this.trackSprites[spriteName].audio.play()
       this.trackSprites[spriteName].audio.pause()
 
+
       i++;
     }
-    this.createTrackSprites()
 
     this.input.on('gameobjectover', function (pointer, button) {
       this.setButtonFrame(button, 0);
@@ -110,7 +111,7 @@ class Example extends Phaser.Scene {
       this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
       this.updateTrackSprites()
 
-      console.log(`Button: ${button.name} state: ${this.trackSprites[button.name].toggled} `)
+
       if (this.trackSprites[button.name].toggled) {
         this.trackSprites[button.name].audio.resume()
       } else {
@@ -124,20 +125,22 @@ class Example extends Phaser.Scene {
       this.setButtonFrame(button, 0);
     }, this);
 
+
+    this.createTrackSprites(this.trackSprites)
+
   }
 
-  createTrackSprites() {
-    for (let trackSprite in this.trackSprites.values()) {
-      // console.log(trackSprite.toggled)
-      console.log(this.trackSprites)
-      console.log(trackSprite)
+  createTrackSprites(trackSprites) {
+    for (let idx in trackSprites) {
+
+      const trackSprite = trackSprites[idx].title
 
 
     }
   }
 
   updateTrackSprites() {
-    console.log("Updating sprites")
+
     for (let i = 1; i <= 9; i++) {
       // this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
       this.trackSprites[i].visible = this.trackSprites[i].toggled
