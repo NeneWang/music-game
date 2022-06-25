@@ -6,18 +6,6 @@ class Example extends Phaser.Scene {
   constructor() {
     super();
 
-    this.toggleMap = {
-      1: false,
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-      6: false,
-      7: false,
-      8: false,
-      9: false,
-    }
-
     this.trackSprites = [];
 
   }
@@ -98,7 +86,7 @@ class Example extends Phaser.Scene {
 
       console.log(Math.floor(i / division))
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
-      new AudioSprite("spriteName")
+      this.trackSprites[spriteName] = new AudioSprite("spriteName", button)
       i++;
     }
     this.createTrackSprites()
@@ -114,12 +102,11 @@ class Example extends Phaser.Scene {
 
     this.input.on('gameobjectdown', function (pointer, button) {
       // this.sound.playAudioSprite('sfx', button.name);
-      this.toggleMap[button.name] = !this.toggleMap[button.name]
+      this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
       this.updateTrackSprites()
 
-      console.log(this.toggleMap)
-      console.log(`Button: ${button.name} state: ${this.toggleMap[button.name]} `)
-      if (this.toggleMap[button.name]) {
+      console.log(`Button: ${button.name} state: ${this.trackSprites[button.name].toggled} `)
+      if (this.trackSprites[button.name].toggled) {
         musicMap[button.name].resume()
       } else {
         musicMap[button.name].pause()
@@ -135,9 +122,11 @@ class Example extends Phaser.Scene {
   }
 
   createTrackSprites() {
-    for (let i = 1; i <= 9; i++) {
-      this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
-      this.trackSprites[i].visible = false
+    for (let trackSprite in this.trackSprites.values()) {
+      // console.log(trackSprite.toggled)
+      console.log(this.trackSprites)
+      console.log(trackSprite)
+
 
     }
   }
@@ -146,14 +135,14 @@ class Example extends Phaser.Scene {
     console.log("Updating sprites")
     for (let i = 1; i <= 9; i++) {
       // this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
-      this.trackSprites[i].visible = this.toggleMap[i]
+      this.trackSprites[i].visible = this.trackSprites[i].toggled
 
     }
 
   }
 
   leftAsToggled(button) {
-    if (this.toggleMap[button.name]) {
+    if (this.trackSprites[button.name].toggled) {
       this.setButtonFrame(button, 2);
     }
   }
