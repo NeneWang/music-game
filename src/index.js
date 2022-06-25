@@ -48,15 +48,15 @@ class Example extends Phaser.Scene {
 
     const musicMap =
     {
-      "1": this.sound.add("wav1", { loop: true }),
-      "2": this.sound.add("wav2", { loop: true }),
-      "3": this.sound.add("wav3", { loop: true }),
-      "4": this.sound.add("wav4", { loop: true }),
-      "5": this.sound.add("wav5", { loop: true }),
-      "6": this.sound.add("wav9", { loop: true }),
-      "7": this.sound.add("wav6", { loop: true }),
-      "8": this.sound.add("wav7", { loop: true }),
-      "9": this.sound.add("wav8", { loop: true }),
+      "wav1": this.sound.add("wav1", { loop: true }),
+      "wav2": this.sound.add("wav2", { loop: true }),
+      "wav3": this.sound.add("wav3", { loop: true }),
+      "wav4": this.sound.add("wav4", { loop: true }),
+      "wav5": this.sound.add("wav5", { loop: true }),
+      "wav6": this.sound.add("wav9", { loop: true }),
+      "wav7": this.sound.add("wav6", { loop: true }),
+      "wav8": this.sound.add("wav7", { loop: true }),
+      "wav9": this.sound.add("wav8", { loop: true }),
 
 
     }
@@ -88,7 +88,7 @@ class Example extends Phaser.Scene {
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
       console.log(this.trackSprites[spriteName].audioName)
-      this.trackSprites[spriteName].audio = this.sound.add(this.trackSprites[spriteName].audioName, { loop: true })
+      this.trackSprites[spriteName].audio = musicMap[this.trackSprites[spriteName].audioName]
       this.trackSprites[spriteName].audio.play()
       this.trackSprites[spriteName].audio.pause()
 
@@ -112,9 +112,9 @@ class Example extends Phaser.Scene {
 
       console.log(`Button: ${button.name} state: ${this.trackSprites[button.name].toggled} `)
       if (this.trackSprites[button.name].toggled) {
-        musicMap[button.name].resume()
+        this.trackSprites[button.name].audio.resume()
       } else {
-        musicMap[button.name].pause()
+        this.trackSprites[button.name].audio.pause()
       }
 
       this.setButtonFrame(button, 2);
