@@ -139,6 +139,7 @@ class Example extends Phaser.Scene {
       trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
       // trackSprite.smallSprite.setX(70)
       trackSprite.smallSprite.visible = false;
+      
 
 
     }
@@ -153,12 +154,12 @@ class Example extends Phaser.Scene {
       if (trackSprite.toggled) {
         activePics++
 
-        trackSprite.smallSprite.setX(70 * activePics)
+        trackSprite.smallSprite.setX(70 * activePics)        
         trackSprite.smallSprite.visible = true;
-
 
       } else {
         trackSprite.smallSprite.visible = false;
+
       }
     }
 

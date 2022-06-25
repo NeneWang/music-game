@@ -6,6 +6,8 @@ class AudioSprite {
         this.audio;
         this.audioName="wav"+title;
         this.picName = "pic"+title;
+        this.muteBtn
+        this.soloBtn
     }
   }
 
