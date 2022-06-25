@@ -133,7 +133,10 @@ class Example extends Phaser.Scene {
   createTrackSprites(trackSprites) {
     for (let idx in trackSprites) {
 
-      const trackSprite = trackSprites[idx].title
+      const trackSprite = trackSprites[idx]
+      console.log(trackSprite.picName)
+      trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
+      // trackSprite.smallSprite.visible = false;
 
 
     }

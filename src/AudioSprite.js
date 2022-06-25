@@ -5,6 +5,7 @@ class AudioSprite {
         this.smallSprite;
         this.audio;
         this.audioName="wav"+title;
+        this.picName = "pic"+title;
     }
   }
 
