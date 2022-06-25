@@ -126,28 +126,40 @@ class Example extends Phaser.Scene {
     }, this);
 
 
-    this.createTrackSprites(this.trackSprites)
+    this.createTrackSprites()
 
   }
 
-  createTrackSprites(trackSprites) {
+  createTrackSprites() {
+    const trackSprites = this.trackSprites
     for (let idx in trackSprites) {
 
       const trackSprite = trackSprites[idx]
       console.log(trackSprite.picName)
       trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
-      // trackSprite.smallSprite.visible = false;
+      // trackSprite.smallSprite.setX(70)
+      trackSprite.smallSprite.visible = false;
 
 
     }
   }
 
   updateTrackSprites() {
+    let activePics = 1;
+    const trackSprites = this.trackSprites
+    console.log(trackSprites)
+    for (const idx in trackSprites) {
+      const trackSprite = trackSprites[idx]
+      if (trackSprite.toggled) {
+        activePics++
+        
+        trackSprite.smallSprite.setX(70 * activePics)
+        trackSprite.smallSprite.visible = true;
 
-    for (let i = 1; i <= 9; i++) {
-      // this.trackSprites[i] = this.add.image(70 * i, 800, 'pic' + i, 1).setScale(.2)
-      this.trackSprites[i].visible = this.trackSprites[i].toggled
 
+      }else{
+        trackSprite.smallSprite.visible = false;
+      }
     }
 
   }
