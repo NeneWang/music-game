@@ -57,8 +57,6 @@ class Example extends Phaser.Scene {
       "wav7": this.sound.add("wav6", { loop: true }),
       "wav8": this.sound.add("wav7", { loop: true }),
       "wav9": this.sound.add("wav8", { loop: true }),
-
-
     }
 
 
