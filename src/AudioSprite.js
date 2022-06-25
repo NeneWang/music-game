@@ -3,6 +3,8 @@ class AudioSprite {
         this.title = title
         this.toggled = false;
         this.smallSprite;
+        this.audio;
+        this.audioName="wav"+title;
     }
   }
 

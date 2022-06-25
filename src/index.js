@@ -79,14 +79,19 @@ class Example extends Phaser.Scene {
       }
 
 
-      musicMap[spriteName].play()
-      musicMap[spriteName].pause()
+      // musicMap[spriteName].play()
+      // musicMap[spriteName].pause()
 
 
 
       console.log(Math.floor(i / division))
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
-      this.trackSprites[spriteName] = new AudioSprite("spriteName", button)
+      this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
+      console.log(this.trackSprites[spriteName].audioName)
+      this.trackSprites[spriteName].audio = this.sound.add(this.trackSprites[spriteName].audioName, { loop: true })
+      this.trackSprites[spriteName].audio.play()
+      this.trackSprites[spriteName].audio.pause()
+
       i++;
     }
     this.createTrackSprites()
