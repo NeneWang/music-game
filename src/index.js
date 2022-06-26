@@ -138,8 +138,10 @@ class Example extends Phaser.Scene {
       console.log(trackSprite.picName)
       trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
       // trackSprite.smallSprite.setX(70)
-      trackSprite.smallSprite.visible = false;
-      
+      // trackSprite.smallSprite.visible = false;
+      trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
+      trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
+
 
 
     }
@@ -154,7 +156,7 @@ class Example extends Phaser.Scene {
       if (trackSprite.toggled) {
         activePics++
 
-        trackSprite.smallSprite.setX(70 * activePics)        
+        trackSprite.smallSprite.setX(70 * activePics)
         trackSprite.smallSprite.visible = true;
 
       } else {
@@ -186,6 +188,8 @@ class Example extends Phaser.Scene {
 
 }
 
+
+
 const config = {
   type: Phaser.AUTO,
   parent: 'phaser-example',
@@ -193,6 +197,7 @@ const config = {
   height: 900,
   scene: [Example],
   pixelArt: true,
+  backgroundColor: '#FFFFFF',
   audio: {
     disableWebAudio: true
   }
