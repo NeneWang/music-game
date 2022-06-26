@@ -20,6 +20,13 @@ class AudioSprite {
     this.muteBtn.setX(x - 15)
     this.soloBtn.setX(x + 15)
   }
+
+  hideSmallSprite(){
+    this.smallSprite.visible = false;
+    this.muteBtn.visible = false;
+    this.soloBtn.visible = false;
+
+  }
 }
 
 export default AudioSprite
