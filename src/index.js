@@ -126,40 +126,19 @@ class Example extends Phaser.Scene {
       // trackSprite.smallSprite.visible = false;
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
-      // trackSprite.hideSmallSprite()
+      trackSprite.hideSmallSprite()
 
       // trackSprite.smallSprite.setInteractive()
       // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
-      trackSprite.updateTrackSprites = this.updateTrackSprites
+      // trackSprite.updateTrackSprites = this.updateTrackSprites
 
 
       trackSprite.setupButtons()
 
 
     }
-  }
-
-  updateTrackSprites() {
-    console.log("Called")
-    let activePics = 1;
-    const trackSprites = this.trackSprites
-    console.log(trackSprites)
-    for (const idx in trackSprites) {
-      const trackSprite = trackSprites[idx]
-      if (trackSprite.toggled) {
-        activePics++
-        console.log(trackSprite.audioName)
-        trackSprite.showSmallSpriteX(70 * activePics)
-
-
-      } else {
-        trackSprite.hideSmallSprite()
-
-      }
-    }
-
   }
 
   leftAsToggled(button) {

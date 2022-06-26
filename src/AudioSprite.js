@@ -13,7 +13,6 @@ class AudioSprite {
     this.trackSpritesRef
 
     // Functions I will need to initiate later on, or everyting breaks
-    this.updateTrackSprites
     this.setButtonFrame
     this.leftAsToggled
   }
@@ -49,12 +48,13 @@ class AudioSprite {
       console.log(this.trackSpritesRef)
 
       this.toggled=!this.toggled
-      // this.updateTrackSprites()
 
       if(this.toggled){
         this.audio.resume()
+        this.showSmallSpriteX(70)
       }else{
         this.audio.pause()
+        this.hideSmallSprite(70)
       }
       this.setButtonFrame(this.button, 2)
       
