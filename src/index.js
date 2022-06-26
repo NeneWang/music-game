@@ -114,7 +114,10 @@ class Example extends Phaser.Scene {
 
   createTrackSprites() {
     const trackSprites = this.trackSprites
+    // console.log(trackSprites)
     for (let idx in trackSprites) {
+      
+    // console.log(trackSprites)
 
       const trackSprite = trackSprites[idx]
       
@@ -123,14 +126,13 @@ class Example extends Phaser.Scene {
       // trackSprite.smallSprite.visible = false;
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
-      trackSprite.hideSmallSprite()
+      // trackSprite.hideSmallSprite()
 
       // trackSprite.smallSprite.setInteractive()
       // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.updateTrackSprites = this.updateTrackSprites
-      trackSprite.trackSpriteRef = this.trackSprites
 
 
       trackSprite.setupButtons()
