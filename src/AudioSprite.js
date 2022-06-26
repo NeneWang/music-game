@@ -9,6 +9,9 @@ class AudioSprite {
     this.muteBtn
     this.soloBtn
     this.button = button
+
+    // Functions I will need to initiate later on, or everyting breaks
+    this.updateTrackSprites
     this.setButtonFrame
     this.leftAsToggled
   }
@@ -41,6 +44,17 @@ class AudioSprite {
 
       this.setButtonFrame(this.button, 2);
 
+      this.toggled=!this.toggled
+      this.updateTrackSprites()
+
+      if(this.toggled){
+        this.audio.resume()
+      }else{
+        this.audio.pause()
+      }
+      this.setButtonFrame(this.button, 2)
+      
+    
       console.log("pointerdown button")
     })
 

@@ -92,11 +92,6 @@ class Example extends Phaser.Scene {
       i++;
     }
 
-    // this.input.on('gameobjectover', function (pointer, button) {
-    //   this.setButtonFrame(button, 0);
-    // }, this);
-
-
     // this.input.on('gameobjectdown', function (pointer, button) {
     //   // this.sound.playAudioSprite('sfx', button.name);
     //   this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
@@ -110,10 +105,6 @@ class Example extends Phaser.Scene {
     //   }
 
     //   this.setButtonFrame(button, 2);
-    // }, this);
-
-    // this.input.on('gameobjectup', function (pointer, button) {
-    //   this.setButtonFrame(button, 0);
     // }, this);
 
 
@@ -132,12 +123,15 @@ class Example extends Phaser.Scene {
       // trackSprite.smallSprite.visible = false;
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
-      // trackSprite.hideSmallSprite()
+      trackSprite.hideSmallSprite()
 
       // trackSprite.smallSprite.setInteractive()
       // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
+      trackSprite.updateTrackSprites = this.updateTrackSprites
+
+
       trackSprite.setupButtons()
 
 
