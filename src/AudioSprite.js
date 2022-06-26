@@ -51,7 +51,7 @@ class AudioSprite {
 
       if(this.toggled){
         this.audio.resume()
-        this.showSmallSpriteX(70)
+        this.showSmallSpriteX()
       }else{
         this.audio.pause()
         this.hideSmallSprite(70)
@@ -77,16 +77,16 @@ class AudioSprite {
     console.log("Setting buttons finished ")
   }
 
-  showSmallSpriteX(x) {
-    console.log(x)
+  showSmallSpriteX() {
+    // console.log(x)
     this.smallSprite.visible = true;
     this.muteBtn.visible = true;
     this.soloBtn.visible = true;
 
 
-    this.smallSprite.setX(x)
-    this.muteBtn.setX(x - 15)
-    this.soloBtn.setX(x + 15)
+    // this.smallSprite.setX(x)
+    // this.muteBtn.setX(x - 15)
+    // this.soloBtn.setX(x + 15)
   }
 
   hideSmallSprite() {
