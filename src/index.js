@@ -77,13 +77,8 @@ class Example extends Phaser.Scene {
       if (!spritemap.hasOwnProperty(spriteName)) {
         continue;
       }
-
-
       // musicMap[spriteName].play()
       // musicMap[spriteName].pause()
-
-
-
 
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
 
@@ -97,33 +92,29 @@ class Example extends Phaser.Scene {
       i++;
     }
 
-    this.input.on('gameobjectover', function (pointer, button) {
-      this.setButtonFrame(button, 0);
-    }, this);
-
-    this.input.on('gameobjectout', function (pointer, button) {
-      this.setButtonFrame(button, 1);
-      this.leftAsToggled(button)
-    }, this);
-
-    this.input.on('gameobjectdown', function (pointer, button) {
-      // this.sound.playAudioSprite('sfx', button.name);
-      this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
-      this.updateTrackSprites()
+    // this.input.on('gameobjectover', function (pointer, button) {
+    //   this.setButtonFrame(button, 0);
+    // }, this);
 
 
-      if (this.trackSprites[button.name].toggled) {
-        this.trackSprites[button.name].audio.resume()
-      } else {
-        this.trackSprites[button.name].audio.pause()
-      }
+    // this.input.on('gameobjectdown', function (pointer, button) {
+    //   // this.sound.playAudioSprite('sfx', button.name);
+    //   this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
+    //   this.updateTrackSprites()
 
-      this.setButtonFrame(button, 2);
-    }, this);
 
-    this.input.on('gameobjectup', function (pointer, button) {
-      this.setButtonFrame(button, 0);
-    }, this);
+    //   if (this.trackSprites[button.name].toggled) {
+    //     this.trackSprites[button.name].audio.resume()
+    //   } else {
+    //     this.trackSprites[button.name].audio.pause()
+    //   }
+
+    //   this.setButtonFrame(button, 2);
+    // }, this);
+
+    // this.input.on('gameobjectup', function (pointer, button) {
+    //   this.setButtonFrame(button, 0);
+    // }, this);
 
 
     this.createTrackSprites()
@@ -135,13 +126,16 @@ class Example extends Phaser.Scene {
     for (let idx in trackSprites) {
 
       const trackSprite = trackSprites[idx]
-      console.log(trackSprite.picName)
+      
       trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
       // trackSprite.smallSprite.setX(70)
       // trackSprite.smallSprite.visible = false;
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
-      trackSprite.hideSmallSprite()
+      // trackSprite.hideSmallSprite()
+
+      trackSprite.smallSprite.setInteractive()
+      trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
 
 
     }
@@ -155,8 +149,8 @@ class Example extends Phaser.Scene {
       const trackSprite = trackSprites[idx]
       if (trackSprite.toggled) {
         activePics++
-        
-        trackSprite.showSmallSpriteX(70*activePics)
+
+        trackSprite.showSmallSpriteX(70 * activePics)
 
 
       } else {

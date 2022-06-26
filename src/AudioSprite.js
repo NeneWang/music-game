@@ -8,6 +8,31 @@ class AudioSprite {
     this.picName = "pic" + title;
     this.muteBtn
     this.soloBtn
+    this.button = button
+  }
+
+  setupButtons() {
+
+    // Setup the Main Buttons
+    this.button.setInteractive()
+    this.button.on('pointerout', () => {
+      this.button.setButtonFrame(button, 1);
+      this.button.leftAsToggled(button)
+    })
+    this.button.on('pointerdown', () => {
+      console.log("pointerdown")
+    })
+    this.button.on('pointerup', () => {
+      console.log("pointerup")
+    })
+
+
+    // Setup the Small Sprites
+    this.smallSprite.setInteractive()
+    this.smallSprite.on('pointerdown', () => { console.log("Mouse Down") })
+
+
+
   }
 
   showSmallSpriteX(x) {
@@ -21,7 +46,7 @@ class AudioSprite {
     this.soloBtn.setX(x + 15)
   }
 
-  hideSmallSprite(){
+  hideSmallSprite() {
     this.smallSprite.visible = false;
     this.muteBtn.visible = false;
     this.soloBtn.visible = false;
