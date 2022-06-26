@@ -130,6 +130,7 @@ class Example extends Phaser.Scene {
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.updateTrackSprites = this.updateTrackSprites
+      trackSprite.trackSpriteRef = this.trackSprites
 
 
       trackSprite.setupButtons()
@@ -147,7 +148,7 @@ class Example extends Phaser.Scene {
       const trackSprite = trackSprites[idx]
       if (trackSprite.toggled) {
         activePics++
-
+        console.log(trackSprite.audioName)
         trackSprite.showSmallSpriteX(70 * activePics)
 
 

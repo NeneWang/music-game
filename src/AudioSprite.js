@@ -10,6 +10,8 @@ class AudioSprite {
     this.soloBtn
     this.button = button
 
+    this.trackSpritesRef
+
     // Functions I will need to initiate later on, or everyting breaks
     this.updateTrackSprites
     this.setButtonFrame
@@ -44,8 +46,10 @@ class AudioSprite {
 
       this.setButtonFrame(this.button, 2);
 
+      console.log(this.trackSpritesRef)
+
       this.toggled=!this.toggled
-      this.updateTrackSprites()
+      // this.updateTrackSprites()
 
       if(this.toggled){
         this.audio.resume()
@@ -74,7 +78,7 @@ class AudioSprite {
   }
 
   showSmallSpriteX(x) {
-    console.log(this.audioName)
+    console.log(x)
     this.smallSprite.visible = true;
     this.muteBtn.visible = true;
     this.soloBtn.visible = true;
