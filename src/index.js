@@ -139,6 +139,7 @@ class Example extends Phaser.Scene {
   }
 
   updateTrackSprites() {
+    console.log("Called")
     let activePics = 1;
     const trackSprites = this.trackSprites
     console.log(trackSprites)

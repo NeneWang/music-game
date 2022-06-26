@@ -74,6 +74,7 @@ class AudioSprite {
   }
 
   showSmallSpriteX(x) {
+    console.log(this.audioName)
     this.smallSprite.visible = true;
     this.muteBtn.visible = true;
     this.soloBtn.visible = true;
