@@ -11,14 +11,28 @@ class AudioSprite {
     this.button = button
   }
 
+  setButtonFrame(button, frame) {
+    this.frame = button.scene.textures.getFrame(button.picName, frame);
+  }
+
+  leftAsToggled(button) {
+    if (this.toggled) {
+      this.setButtonFrame(button, 2);
+    }
+  }
+
   setupButtons() {
 
     console.log("Setting buttons for ")
     // Setup the Main Buttons
     this.button.setInteractive()
+
+    console.log("Made Interactive ")
+    console.log(this.button)
+
     this.button.on('pointerout', () => {
-      this.button.setButtonFrame(button, 1);
-      this.button.leftAsToggled(button)
+      this.setButtonFrame(this, 1);
+      this.leftAsToggled(this)
     })
     this.button.on('pointerdown', () => {
       console.log("pointerdown button")
