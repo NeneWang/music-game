@@ -115,6 +115,7 @@ class Example extends Phaser.Scene {
 
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
+      trackSprite.setMuteFrame = this.setMuteFrame
 
 
 
@@ -141,6 +142,10 @@ class Example extends Phaser.Scene {
 
   setButtonFrame(button, frame) {
     button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
+  }
+
+  setMuteFrame(muteObject, frame){
+    muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
   }
 
 }

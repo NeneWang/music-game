@@ -15,6 +15,7 @@ class AudioSprite {
     // Functions I will need to initiate later on, or everyting breaks
     this.setButtonFrame
     this.leftAsToggled
+    this.setMuteFrame
   }
 
   setupButtons() {
@@ -43,23 +44,9 @@ class AudioSprite {
 
     this.button.on('pointerdown', () => {
 
-      this.setButtonFrame(this.button, 2);
-
-      console.log(this.trackSpritesRef)
-
-      this.toggled=!this.toggled
-
-      if(this.toggled){
-        this.audio.resume()
-        this.showSmallSpriteX()
-      }else{
-        this.audio.pause()
-        this.hideSmallSprite(70)
-      }
-      this.setButtonFrame(this.button, 2)
+      this.handleMusicSpriteClick();
       
     
-      console.log("pointerdown button")
     })
 
 
@@ -71,7 +58,9 @@ class AudioSprite {
 
     // Setup the Small Sprites
     this.smallSprite.setInteractive()
-    this.smallSprite.on('pointerover', () => { console.log('pointerover'); });
+    this.smallSprite.on('pointerdown', () => { 
+      this.handleMusicSpriteClick()
+     });
 
 
     console.log("Setting buttons finished ")
@@ -94,6 +83,24 @@ class AudioSprite {
     this.muteBtn.visible = false;
     this.soloBtn.visible = false;
 
+  }
+  
+
+  handleMusicSpriteClick() {
+    this.setButtonFrame(this.button, 2);
+
+    console.log(this.trackSpritesRef);
+
+    this.toggled = !this.toggled;
+
+    if (this.toggled) {
+      this.audio.resume();
+      this.showSmallSpriteX();
+    } else {
+      this.audio.pause();
+      this.hideSmallSprite(70);
+    }
+    this.setButtonFrame(this.button, 2);
   }
 }
 
