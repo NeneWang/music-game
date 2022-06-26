@@ -141,7 +141,7 @@ class Example extends Phaser.Scene {
       // trackSprite.smallSprite.visible = false;
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
-
+      trackSprite.hideSmallSprite()
 
 
     }
@@ -155,12 +155,12 @@ class Example extends Phaser.Scene {
       const trackSprite = trackSprites[idx]
       if (trackSprite.toggled) {
         activePics++
+        
+        trackSprite.showSmallSpriteX(70*activePics)
 
-        trackSprite.smallSprite.setX(70 * activePics)
-        trackSprite.smallSprite.visible = true;
 
       } else {
-        trackSprite.smallSprite.visible = false;
+        trackSprite.hideSmallSprite()
 
       }
     }
