@@ -22,19 +22,31 @@ class AudioSprite {
     console.log("Made Interactive ")
     console.log(this.button)
 
-    this.button.on('pointerout', () => {
+    this.button.on('pointerover', () => {
       // this.setButtonFrame(this, 1);
       // this.leftAsToggled(this)
-      this.frame = this.scene.textures.getFrame(this.picName, frame);
-      
-      console.log("POinterout button")
+
+      this.setButtonFrame(this.button, 0)
+
+      // console.log("POinterout button")
     })
+
+    this.button.on('pointerout', () => {
+
+      this.setButtonFrame(this.button, 1);
+    })
+
+
     this.button.on('pointerdown', () => {
-      this.setButtonFrame(this.button, 0);
+
+      this.setButtonFrame(this.button, 2);
 
       console.log("pointerdown button")
     })
+
+
     this.button.on('pointerup', () => {
+      this.setButtonFrame(this.button, 1)
       console.log("pointerup")
     })
 
