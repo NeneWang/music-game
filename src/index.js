@@ -134,8 +134,9 @@ class Example extends Phaser.Scene {
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
       // trackSprite.hideSmallSprite()
 
-      trackSprite.smallSprite.setInteractive()
-      trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
+      // trackSprite.smallSprite.setInteractive()
+      // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
+      trackSprite.setupButtons()
 
 
     }

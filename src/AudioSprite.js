@@ -13,6 +13,7 @@ class AudioSprite {
 
   setupButtons() {
 
+    console.log("Setting buttons for ")
     // Setup the Main Buttons
     this.button.setInteractive()
     this.button.on('pointerout', () => {
@@ -20,7 +21,7 @@ class AudioSprite {
       this.button.leftAsToggled(button)
     })
     this.button.on('pointerdown', () => {
-      console.log("pointerdown")
+      console.log("pointerdown button")
     })
     this.button.on('pointerup', () => {
       console.log("pointerup")
@@ -29,10 +30,10 @@ class AudioSprite {
 
     // Setup the Small Sprites
     this.smallSprite.setInteractive()
-    this.smallSprite.on('pointerdown', () => { console.log("Mouse Down") })
+    this.smallSprite.on('pointerover', () => { console.log('pointerover'); });
 
 
-
+    console.log("Setting buttons finished ")
   }
 
   showSmallSpriteX(x) {
