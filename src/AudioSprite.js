@@ -9,16 +9,8 @@ class AudioSprite {
     this.muteBtn
     this.soloBtn
     this.button = button
-  }
-
-  setButtonFrame(button, frame) {
-    this.frame = this.scene.textures.getFrame(button.picName, frame);
-  }
-
-  leftAsToggled(button) {
-    if (this.toggled) {
-      this.setButtonFrame(button, 2);
-    }
+    this.setButtonFrame
+    this.leftAsToggled
   }
 
   setupButtons() {
@@ -33,10 +25,13 @@ class AudioSprite {
     this.button.on('pointerout', () => {
       // this.setButtonFrame(this, 1);
       // this.leftAsToggled(this)
+      this.frame = this.scene.textures.getFrame(this.picName, frame);
       
       console.log("POinterout button")
     })
     this.button.on('pointerdown', () => {
+      this.setButtonFrame(this.button, 0);
+
       console.log("pointerdown button")
     })
     this.button.on('pointerup', () => {

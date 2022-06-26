@@ -136,6 +136,8 @@ class Example extends Phaser.Scene {
 
       // trackSprite.smallSprite.setInteractive()
       // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
+      trackSprite.setButtonFrame = this.setButtonFrame
+      trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.setupButtons()
 
 
