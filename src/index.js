@@ -13,7 +13,6 @@ class Example extends Phaser.Scene {
 
   preload() {
 
-    // this.load.spritesheet('button', 'assets/ui/flixel-button.png', { frameWidth: 80, frameHeight: 20 });
 
     this.load.spritesheet('pic1', 'assets/gms/images/1-spread.png', { frameWidth: 300, frameHeight: 300 });
     this.load.spritesheet('pic2', 'assets/gms/images/2-spread.png', { frameWidth: 300, frameHeight: 300 });
@@ -63,11 +62,8 @@ class Example extends Phaser.Scene {
     }
 
 
-    // this.add.image(400, 300, 'title');
     const spritemap = this.cache.json.get('sfx').spritemap;
 
-    // this.sound.playAudioSprite('1wav');
-    // this.makeButton('mew', 680, 115 + i * 40);
 
 
     let i = 0;
@@ -77,8 +73,8 @@ class Example extends Phaser.Scene {
       if (!spritemap.hasOwnProperty(spriteName)) {
         continue;
       }
-      // musicMap[spriteName].play()
-      // musicMap[spriteName].pause()
+
+
 
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
 
@@ -92,20 +88,9 @@ class Example extends Phaser.Scene {
       i++;
     }
 
-    // this.input.on('gameobjectdown', function (pointer, button) {
-    //   // this.sound.playAudioSprite('sfx', button.name);
-    //   this.trackSprites[button.name].toggled = !this.trackSprites[button.name].toggled
-    //   this.updateTrackSprites()
 
 
-    //   if (this.trackSprites[button.name].toggled) {
-    //     this.trackSprites[button.name].audio.resume()
-    //   } else {
-    //     this.trackSprites[button.name].audio.pause()
-    //   }
 
-    //   this.setButtonFrame(button, 2);
-    // }, this);
 
 
     this.createTrackSprites()
@@ -114,25 +99,23 @@ class Example extends Phaser.Scene {
 
   createTrackSprites() {
     const trackSprites = this.trackSprites
-    // console.log(trackSprites)
     for (let idx in trackSprites) {
-      
-    // console.log(trackSprites)
+
 
       const trackSprite = trackSprites[idx]
-      
+
       trackSprite.smallSprite = this.add.image(70 * idx, 800, trackSprite.picName, 1).setScale(.2)
-      // trackSprite.smallSprite.setX(70)
-      // trackSprite.smallSprite.visible = false;
+
+
       trackSprite.muteBtn = this.add.image(70 * idx - 15, 800 + 70, 'mute', 1).setScale(.5)
       trackSprite.soloBtn = this.add.image(70 * idx + 15, 800 + 70, 'solo', 1).setScale(.5)
       trackSprite.hideSmallSprite()
 
-      // trackSprite.smallSprite.setInteractive()
-      // trackSprite.smallSprite.on('pointerover', () => { console.log('pointerover'); });
+
+
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
-      // trackSprite.updateTrackSprites = this.updateTrackSprites
+
 
 
       trackSprite.setupButtons()
