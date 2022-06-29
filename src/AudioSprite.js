@@ -98,12 +98,14 @@ class AudioSprite {
     console.log(this.title, "muted")
     this.audio.mute = true;
     this.updateVisuals()
+    this.unSoloAll()
   }
 
   toggleMute() {
     // Somehow should be able to mute that specific track
     this.audio.mute = !this.audio.mute;
     this.updateVisuals()
+    this.unSoloAll()
 
   }
 
@@ -143,12 +145,17 @@ class AudioSprite {
 
     if (this.toggled) {
       this.audio.resume();
+      if(this.audio.mute){
+        this.audio.mute = false
+        this.unSoloAll()
+      }
       this.showSmallSpriteX();
     } else {
       this.audio.pause();
       this.hideSmallSprite(70);
     }
     this.setButtonFrame(this.button, 2);
+    this.updateVisuals()
   }
 }
 
