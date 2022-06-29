@@ -87,7 +87,6 @@ class Example extends Phaser.Scene {
     }
 
     this.createTrackSprites()
-    this.setupSecond()
   }
 
   createTrackSprites() {
@@ -109,7 +108,9 @@ class Example extends Phaser.Scene {
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.setMuteFrame = this.setMuteFrame
-
+      trackSprite.muteAll = () => {
+        this.muteAllSongs()
+      }
 
       trackSprite.setupButtons()
 
@@ -120,26 +121,13 @@ class Example extends Phaser.Scene {
   }
 
 
-  setupSecond() {
-
-    const trackSprites = this.trackSprites
-
-    for (let idx in trackSprites) {
-      const trackSprite = trackSprites[idx]
-      trackSprite.muteAll = () => {
-        this.muteAllSongs()
-      }
-
-    }
-
-  }
 
   muteAllSongs() {
 
 
 
     const trackSprites = this.trackSprites
-    console.log(trackSprites)
+    
 
     for (let idx = 1; idx < 10; idx++) {
 
