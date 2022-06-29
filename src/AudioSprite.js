@@ -14,9 +14,14 @@ class AudioSprite {
 
     // Functions I will need to initiate later on, or everyting breaks
     this.setButtonFrame
-    this.leftAsToggled
     this.setMuteFrame
     this.muteAll
+  }
+
+  leftAsToggled() {
+    if (this.toggled) {
+      this.setButtonFrame(this.button, 2)
+    }
   }
 
   setupButtons() {
@@ -27,9 +32,10 @@ class AudioSprite {
 
     this.button.on('pointerover', () => {
       // this.setButtonFrame(this, 1);
-      // this.leftAsToggled(this)
 
       this.setButtonFrame(this.button, 0)
+      // this.leftAsToggled()
+
 
       // console.log("POinterout button")
     })
@@ -37,6 +43,10 @@ class AudioSprite {
     this.button.on('pointerout', () => {
 
       this.setButtonFrame(this.button, 1);
+      this.leftAsToggled()
+
+
+
     })
 
 
@@ -50,7 +60,7 @@ class AudioSprite {
 
     this.button.on('pointerup', () => {
       this.setButtonFrame(this.button, 1)
-      console.log("pointerup")
+      this.leftAsToggled()
     })
 
 
@@ -86,8 +96,8 @@ class AudioSprite {
     // this.muteBtn.setX(x - 15)
     // this.soloBtn.setX(x + 15)
   }
-  
-  mute(){
+
+  mute() {
     console.log(this.title, "muted")
     this.audio.mute = true;
   }

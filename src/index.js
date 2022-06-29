@@ -106,7 +106,6 @@ class Example extends Phaser.Scene {
 
 
       trackSprite.setButtonFrame = this.setButtonFrame
-      trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.setMuteFrame = this.setMuteFrame
       trackSprite.muteAll = () => {
         this.muteAllSongs()
@@ -127,7 +126,7 @@ class Example extends Phaser.Scene {
 
 
     const trackSprites = this.trackSprites
-    
+    console.log(trackSprites)
 
     for (let idx = 1; idx < 10; idx++) {
 
@@ -141,11 +140,6 @@ class Example extends Phaser.Scene {
 
   }
 
-  leftAsToggled(button) {
-    if (this.trackSprites[button.name].toggled) {
-      this.setButtonFrame(button, 2);
-    }
-  }
 
   makeButton(name, x, y) {
     const button = this.add.image(x, y, 'pic' + name, 1)
