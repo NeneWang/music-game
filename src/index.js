@@ -83,18 +83,10 @@ class Example extends Phaser.Scene {
       this.trackSprites[spriteName].audio = musicMap[this.trackSprites[spriteName].audioName]
       this.trackSprites[spriteName].audio.play()
       this.trackSprites[spriteName].audio.pause()
-
-
       i++;
     }
 
-
-
-
-
-
     this.createTrackSprites()
-
   }
 
   createTrackSprites() {
@@ -116,6 +108,7 @@ class Example extends Phaser.Scene {
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.setMuteFrame = this.setMuteFrame
+      trackSprite.muteAll = this.muteAllSongs
 
 
 
@@ -125,28 +118,36 @@ class Example extends Phaser.Scene {
     }
   }
 
-  leftAsToggled(button) {
-    if (this.trackSprites[button.name].toggled) {
-      this.setButtonFrame(button, 2);
+  muteAllSongs() {
+    for (let idx in this.trackSprites){
+      trackSprites[idx].mute()
+      
     }
-  }
+    
+}
 
-  makeButton(name, x, y) {
-    const button = this.add.image(x, y, 'pic' + name, 1)
-      .setInteractive();
-    button.name = name;
-    button.setScale(.8, .8);
-    return button
+leftAsToggled(button) {
+  if (this.trackSprites[button.name].toggled) {
+    this.setButtonFrame(button, 2);
   }
+}
+
+makeButton(name, x, y) {
+  const button = this.add.image(x, y, 'pic' + name, 1)
+    .setInteractive();
+  button.name = name;
+  button.setScale(.8, .8);
+  return button
+}
 
 
-  setButtonFrame(button, frame) {
-    button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
-  }
+setButtonFrame(button, frame) {
+  button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
+}
 
-  setMuteFrame(muteObject, frame){
-    muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
-  }
+setMuteFrame(muteObject, frame){
+  muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
+}
 
 }
 

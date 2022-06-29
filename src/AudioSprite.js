@@ -16,6 +16,7 @@ class AudioSprite {
     this.setButtonFrame
     this.leftAsToggled
     this.setMuteFrame
+    this.muteAll
   }
 
   setupButtons() {
@@ -45,8 +46,8 @@ class AudioSprite {
     this.button.on('pointerdown', () => {
 
       this.handleMusicSpriteClick();
-      
-    
+
+
     })
 
 
@@ -58,9 +59,9 @@ class AudioSprite {
 
     // Setup the Small Sprites
     this.smallSprite.setInteractive()
-    this.smallSprite.on('pointerdown', () => { 
+    this.smallSprite.on('pointerdown', () => {
       this.handleMusicSpriteClick()
-     });
+    });
 
 
     console.log("Setting buttons finished ")
@@ -72,19 +73,47 @@ class AudioSprite {
     this.muteBtn.visible = true;
     this.soloBtn.visible = true;
 
+    this.muteBtn.setInteractive();
+    this.muteBtn.on('pointerdown', () => {
+      this.toggleMute()
+    })
+
+    this.soloBtn.setInteractive();
+    this.soloBtn.on('pointerdown', () => {
+      this.toggleSolo()
+    })
+    // this.soloBtn.setInteractive();
+
 
     // this.smallSprite.setX(x)
     // this.muteBtn.setX(x - 15)
     // this.soloBtn.setX(x + 15)
   }
+  
+  mute(){
+    this.audio.mute = true;
+  }
+
+  toggleMute() {
+    // Somehow should be able to mute that specific track
+    this.audio.mute = !this.audio.mute;
+  }
+
+  toggleSolo() {
+    // It should tell every song to mute (Except for this. I can go with the array and then toggle unmute this one.)
+
+  }
+
+
 
   hideSmallSprite() {
     this.smallSprite.visible = false;
     this.muteBtn.visible = false;
     this.soloBtn.visible = false;
 
+
   }
-  
+
 
   handleMusicSpriteClick() {
     this.setButtonFrame(this.button, 2);
