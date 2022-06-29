@@ -87,6 +87,7 @@ class Example extends Phaser.Scene {
     }
 
     this.createTrackSprites()
+    this.setupSecond()
   }
 
   createTrackSprites() {
@@ -108,46 +109,72 @@ class Example extends Phaser.Scene {
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.leftAsToggled = this.leftAsToggled
       trackSprite.setMuteFrame = this.setMuteFrame
-      trackSprite.muteAll = this.muteAllSongs
-
 
 
       trackSprite.setupButtons()
 
 
+
     }
+    // this.muteAllSongs();
+  }
+
+
+  setupSecond() {
+
+    const trackSprites = this.trackSprites
+
+    for (let idx in trackSprites) {
+      const trackSprite = trackSprites[idx]
+      trackSprite.muteAll = () => {
+        this.muteAllSongs()
+      }
+
+    }
+
   }
 
   muteAllSongs() {
-    for (let idx in this.trackSprites){
-      trackSprites[idx].mute()
-      
+
+
+
+    const trackSprites = this.trackSprites
+    console.log(trackSprites)
+
+    for (let idx = 1; idx < 10; idx++) {
+
+      const trackSprite = trackSprites[idx]
+
+
+      // trackSprite.audio.mute = false
+      trackSprite.mute()
+
     }
-    
-}
 
-leftAsToggled(button) {
-  if (this.trackSprites[button.name].toggled) {
-    this.setButtonFrame(button, 2);
   }
-}
 
-makeButton(name, x, y) {
-  const button = this.add.image(x, y, 'pic' + name, 1)
-    .setInteractive();
-  button.name = name;
-  button.setScale(.8, .8);
-  return button
-}
+  leftAsToggled(button) {
+    if (this.trackSprites[button.name].toggled) {
+      this.setButtonFrame(button, 2);
+    }
+  }
+
+  makeButton(name, x, y) {
+    const button = this.add.image(x, y, 'pic' + name, 1)
+      .setInteractive();
+    button.name = name;
+    button.setScale(.8, .8);
+    return button
+  }
 
 
-setButtonFrame(button, frame) {
-  button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
-}
+  setButtonFrame(button, frame) {
+    button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
+  }
 
-setMuteFrame(muteObject, frame){
-  muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
-}
+  setMuteFrame(muteObject, frame) {
+    muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
+  }
 
 }
 

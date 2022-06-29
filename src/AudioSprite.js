@@ -21,12 +21,9 @@ class AudioSprite {
 
   setupButtons() {
 
-    console.log("Setting buttons for ")
     // Setup the Main Buttons
     this.button.setInteractive()
 
-    console.log("Made Interactive ")
-    console.log(this.button)
 
     this.button.on('pointerover', () => {
       // this.setButtonFrame(this, 1);
@@ -91,6 +88,7 @@ class AudioSprite {
   }
   
   mute(){
+    console.log(this.title, "muted")
     this.audio.mute = true;
   }
 
@@ -101,7 +99,9 @@ class AudioSprite {
 
   toggleSolo() {
     // It should tell every song to mute (Except for this. I can go with the array and then toggle unmute this one.)
-
+    // this.mute()
+    this.muteAll()
+    this.audio.mute = false;
   }
 
 
