@@ -2,7 +2,7 @@
 
 ## Credits
 
-The idea and rights are from my internship manager Greame Sibirsky: sibirsky.stairs@gmail.com. 
+The idea and rights belong to my internship manager, Greame Sibirsky: sibirsky.stairs@gmail.com. 
 I don't claim any rights to it, I am only responsible of the development of this prototype.
 
 Music game where you can play music in a cube design using Phaser
