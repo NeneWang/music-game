@@ -105,8 +105,16 @@ class Example extends Phaser.Scene {
 
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.setMuteFrame = this.setMuteFrame
+      trackSprite.setSoloFrame = this.setSoloFrame
+      
+      trackSprite.updateVisualAllMusicFrames = () => this.updateVisualAllMusicFrames
+
       trackSprite.muteAll = () => {
         this.muteAllSongs()
+      }
+
+      trackSprite.unSoloAll = () => {
+        this.unSoloAll()
       }
 
       trackSprite.setupButtons()
@@ -126,7 +134,7 @@ class Example extends Phaser.Scene {
     const trackSprites = this.trackSprites
     console.log(trackSprites)
 
-    for (let idx = 1; idx < 10; idx++) {
+    for (let idx in trackSprites) {
 
       const trackSprite = trackSprites[idx]
 
@@ -147,6 +155,21 @@ class Example extends Phaser.Scene {
     return button
   }
 
+  unSoloAll() {
+    const trackSprites = this.trackSprites
+    for (let idx in trackSprites) {
+      
+      const trackSprite = trackSprites[idx]
+      this.setSoloFrame(trackSprite.soloBtn, 1)
+    }
+  }
+
+  updateVisualAllMusicFrames(){
+    const trackSprite = this.trackSprites
+    for (let idx in trackSprites) {
+      trackSprite[idx].updateVisuals()
+    }
+  }
 
   setButtonFrame(button, frame) {
     button.frame = button.scene.textures.getFrame('pic' + button.name, frame);
@@ -154,6 +177,10 @@ class Example extends Phaser.Scene {
 
   setMuteFrame(muteObject, frame) {
     muteObject.frame = muteObject.scene.textures.getFrame('mute', frame)
+  }
+
+  setSoloFrame(soloObject, frame) {
+    soloObject.frame = soloObject.scene.textures.getFrame('solo', frame)
   }
 
 }

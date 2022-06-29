@@ -16,7 +16,9 @@ class AudioSprite {
     // Functions I will need to initiate later on, or everyting breaks
     this.setButtonFrame
     this.setMuteFrame
+    this.setSoloFrame
     this.muteAll
+    this.unSoloAll
   }
 
   leftAsToggled() {
@@ -115,7 +117,10 @@ class AudioSprite {
     // this.mute()
     this.muteAll()
     this.audio.mute = false;
+    this.unSoloAll()
+    this.setSoloFrame(this.soloBtn, 2)
     this.updateVisuals()
+
   }
 
 
