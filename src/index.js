@@ -64,8 +64,6 @@ class Example extends Phaser.Scene {
 
     const spritemap = this.cache.json.get('sfx').spritemap;
 
-
-
     let i = 0;
     const division = 3
 

@@ -6,6 +6,7 @@ class AudioSprite {
     this.audio;
     this.audioName = "wav" + title;
     this.picName = "pic" + title;
+
     this.muteBtn
     this.soloBtn
     this.button = button
@@ -89,22 +90,24 @@ class AudioSprite {
     this.soloBtn.on('pointerdown', () => {
       this.toggleSolo()
     })
-    // this.soloBtn.setInteractive();
-
-
-    // this.smallSprite.setX(x)
-    // this.muteBtn.setX(x - 15)
-    // this.soloBtn.setX(x + 15)
   }
 
   mute() {
     console.log(this.title, "muted")
     this.audio.mute = true;
+    this.updateVisuals()
   }
 
   toggleMute() {
     // Somehow should be able to mute that specific track
     this.audio.mute = !this.audio.mute;
+    this.updateVisuals()
+
+  }
+
+  updateVisuals() {
+    this.setMuteFrame(this.muteBtn, this.audio.mute ? 2 : 1)
+
   }
 
   toggleSolo() {
@@ -112,6 +115,7 @@ class AudioSprite {
     // this.mute()
     this.muteAll()
     this.audio.mute = false;
+    this.updateVisuals()
   }
 
 
