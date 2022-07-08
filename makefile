@@ -1,5 +1,5 @@
 
-PAGE=http://platinumfilings.wngnelson.com/
+PAGE=http://gms-music.wngnelson.com/
 
 # Prototype FTP
 # FTP_HOST=wangnancy.com
@@ -7,8 +7,8 @@ PAGE=http://platinumfilings.wngnelson.com/
 # FTP_PASSWORD=slcadmin2022
 
 FTP_HOST=ftp.wngnelson.com
-FTP_USER=u851203827.platinum
-FTP_PASSWORD=Platinum448!
+FTP_USER=u851203827.gms
+FTP_PASSWORD=Gms2022!
 
 THIS_BRANCH=master
 MASTER_BRANCH=master
@@ -71,7 +71,7 @@ ft-configpush:
 	git config git-ftp.url ${FTP_HOST}
 	git config git-ftp.user ${FTP_USER}
 	git config git-ftp.password ${FTP_PASSWORD}
-	git config git-ftp.syncroot _static/
+	git config git-ftp.syncroot build/
 	git ftp push --force
 
 
@@ -79,7 +79,7 @@ ftpinit:
 	git config git-ftp.url ${FTP_HOST}
 	git config git-ftp.user ${FTP_USER}
 	git config git-ftp.password ${FTP_PASSWORD}
-	git config git-ftp.syncroot _static/
+	git config git-ftp.syncroot build/
 
 first-deploy:
 	make ftpinit
