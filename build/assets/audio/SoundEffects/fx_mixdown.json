@@ -1,0 +1,53 @@
+{
+  "resources": [
+    "./assets/audio/SoundEffects/fx_mixdown.ogg",
+    "./assets/audio/SoundEffects/fx_mixdown.mp3"
+  ],
+  "spritemap": {
+    "1": {
+      "start": 1,
+      "end": 2,
+      "loop": false
+    },
+    "2": {
+      "start": 3,
+      "end": 3.5,
+      "loop": false
+    },
+    "3": {
+      "start": 4,
+      "end": 7.2,
+      "loop": false
+    },
+    "4": {
+      "start": 8,
+      "end": 8.5,
+      "loop": false
+    },
+    "5": {
+      "start": 9,
+      "end": 9.1,
+      "loop": false
+    },
+    "6": {
+      "start": 10,
+      "end": 11,
+      "loop": false
+    },
+    "7": {
+      "start": 12,
+      "end": 16.2,
+      "loop": false
+    },
+    "8": {
+      "start": 17,
+      "end": 18,
+      "loop": false
+    },
+    "9": {
+      "start": 19,
+      "end": 19.3,
+      "loop": false
+    }
+  }
+}
