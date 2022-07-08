@@ -8,7 +8,7 @@ The idea and rights belong to my internship manager, Greame Sibirsky: sibirsky.s
 I don't claim any rights to it, I am only responsible of the development of this prototype.
 
 ## Live Demo
-Live demo available here [GMS Music](http://gms-music.l0l.in/)
+[Live demo available here: GMS Music](http://gms-music.l0l.in/)
 
 ## What is this?
 
