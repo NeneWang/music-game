@@ -54,10 +54,13 @@ class AudioSprite {
 
 
     this.button.on('pointerdown', () => {
-
       this.handleMusicSpriteClick();
 
 
+    })
+
+    this.button.on('wheel', () => {
+      console.log("Scrolling")
     })
 
 
