@@ -112,6 +112,7 @@ class AudioSprite {
   increaseAudioTrack(){
     this.trackNumber++
     this.confineTrack()
+    this.changeAudioTrack(this.trackNumber-1)
     this.updateTrackWithName()
     
   }
@@ -119,11 +120,25 @@ class AudioSprite {
   decreaseAudioTrack(){
     this.trackNumber--
     this.confineTrack()
+    this.changeAudioTrack(this.trackNumber-1)
     this.updateTrackWithName()
   }
 
+  changeAudioTrack(trackNum){
+    
+    if(this.toggled){
+      this.audio.pause()
+    }
+    this.audio = this.audioList[trackNum]
+    
+    if(this.toggled){
+      console.log(this.audio.key)
+      this.audio.resume()
+    }
+  }
+
   updateTrackWithName(){
-    console.log(this.audioList.key)
+    // console.log(this.audioList.key)
     this.updateTrack(`${this.trackNumber} ${this.audioList[this.trackNumber-1].key}`)
   }
 
