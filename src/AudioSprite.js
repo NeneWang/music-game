@@ -4,6 +4,7 @@ class AudioSprite {
     this.toggled = false;
     this.smallSprite;
     this.audio;
+    this.audioList;
     this.audioName = "wav" + title;
     this.picName = "pic" + title;
 

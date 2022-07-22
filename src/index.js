@@ -44,27 +44,27 @@ class Example extends Phaser.Scene {
     this.load.audio("wav8", ["assets/gms/audio/8.wav"])
     this.load.audio("wav9", ["assets/gms/audio/9.wav"])
 
-    this.load.audio("BAD", ["assets/gms/audio/BAD.wav"])
-    this.load.audio("CHORUS1", ["assets/gms/audio/CHORUS1.wav"])
-    this.load.audio("HEY", ["assets/gms/audio/HEY.wav"])
-    this.load.audio("HORN1", ["assets/gms/audio/HORN1.wav"])
-    this.load.audio("HORN2", ["assets/gms/audio/HORN2.wav"])
-    this.load.audio("HORNSTOGETHER", ["assets/gms/audio/HORNSTOGETHER.wav"])
-    this.load.audio("HSDROPOUT", ["assets/gms/audio/HSDROPOUT.wav"])
-    this.load.audio("ITEACH", ["assets/gms/audio/ITEACH.wav"])
-    this.load.audio("ITHOUGHT", ["assets/gms/audio/ITHOUGHT.wav"])
-    this.load.audio("KEYBOARD1", ["assets/gms/audio/KEYBOARD1.wav"])
-    this.load.audio("KICKS1", ["assets/gms/audio/KICKS1.wav"])
-    this.load.audio("LETGRAP", ["assets/gms/audio/LETGRAP.wav"])
-    this.load.audio("Pushup", ["assets/gms/audio/Pushup.wav"])
-    this.load.audio("SNARE1", ["assets/gms/audio/SNARE1.wav"])
-    this.load.audio("SNARE2", ["assets/gms/audio/SNARE2.wav"])
-    this.load.audio("SNARE3", ["assets/gms/audio/SNARE3.wav"])
-    this.load.audio("SNARECOMBO2", ["assets/gms/audio/SNARECOMBO2.wav"])
-    this.load.audio("SNAREHATCOMBO1", ["assets/gms/audio/SNAREHATCOMBO1.wav"])
-    this.load.audio("SOMEOFYOUSWEARWHATIMSPITTIN", ["assets/gms/audio/SOMEOFYOUSWEARWHATIMSPITTIN.wav"])
-    this.load.audio("SUPPORTTHEARTIST", ["assets/gms/audio/SUPPORTTHEARTIST.wav"])
-    this.load.audio("ZSHUMPDUMPDANUMP", ["assets/gms/audio/ZSHUMPDUMPDANUMP.wav"])
+    this.load.audio("BAD", ["assets/gms/audio/BAD.mp3"])
+    this.load.audio("CHORUS1", ["assets/gms/audio/CHORUS1.mp3"])
+    this.load.audio("HEY", ["assets/gms/audio/HEY.mp3"])
+    this.load.audio("HORN1", ["assets/gms/audio/HORN1.mp3"])
+    this.load.audio("HORN2", ["assets/gms/audio/HORN2.mp3"])
+    this.load.audio("HORNSTOGETHER", ["assets/gms/audio/HORNSTOGETHER.mp3"])
+    this.load.audio("HSDROPOUT", ["assets/gms/audio/HSDROPOUT.mp3"])
+    this.load.audio("ITEACH", ["assets/gms/audio/ITEACH.mp3"])
+    this.load.audio("ITHOUGHT", ["assets/gms/audio/ITHOUGHT.mp3"])
+    this.load.audio("KEYBOARD1", ["assets/gms/audio/KEYBOARD1.mp3"])
+    this.load.audio("KICKS1", ["assets/gms/audio/KICKS1.mp3"])
+    this.load.audio("LETGRAP", ["assets/gms/audio/LETGRAP.mp3"])
+    this.load.audio("Pushup", ["assets/gms/audio/Pushup.mp3"])
+    this.load.audio("SNARE1", ["assets/gms/audio/SNARE1.mp3"])
+    this.load.audio("SNARE2", ["assets/gms/audio/SNARE2.mp3"])
+    this.load.audio("SNARE3", ["assets/gms/audio/SNARE3.mp3"])
+    this.load.audio("SNARECOMBO2", ["assets/gms/audio/SNARECOMBO2.mp3"])
+    this.load.audio("SNAREHATCOMBO1", ["assets/gms/audio/SNAREHATCOMBO1.mp3"])
+    this.load.audio("SOMEOFYOUSWEARWHATIMSPITTIN", ["assets/gms/audio/SOMEOFYOUSWEARWHATIMSPITTIN.mp3"])
+    this.load.audio("SUPPORTTHEARTIST", ["assets/gms/audio/SUPPORTTHEARTIST.mp3"])
+    this.load.audio("ZSHUMPDUMPDANUMP", ["assets/gms/audio/ZSHUMPDUMPDANUMP.mp3"])
 
   }
 
@@ -114,7 +114,7 @@ class Example extends Phaser.Scene {
       "5": ["SNARECOMBO2", "SNAREHATCOMBO1"],
       "6": ["ZSHUMPDUMPDANUMP", "CHORUS1"],
       "7": ["Pushup", "SUPPORTTHEARTIST", "BAD"],
-      "8": ["HEY", "keyboard"],
+      "8": ["HEY", "KEYBOARD1"],
       "9": ["SNARE1", "SNARE2", "SNARE3"]
     }
 
@@ -132,11 +132,14 @@ class Example extends Phaser.Scene {
 
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
 
-
+      
 
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
+      
+      this.trackSprites[spriteName].audioList = SquareSongTileMap[spriteName].map(track => this.sound.add(track, { loop: true }),)
+      console.log(this.trackSprites[spriteName].audioList[0])
       this.trackSprites[spriteName].textSprite = this.add.text(config.width / division * (i % division), (Math.floor(i / division)) * (config.height - 200) / division, this.trackSprites[spriteName].trackNumber)
-      this.trackSprites[spriteName].audio = musicMap[this.trackSprites[spriteName].audioName]
+      this.trackSprites[spriteName].audio = this.trackSprites[spriteName].audioList[0]
       this.trackSprites[spriteName].audio.play()
       this.trackSprites[spriteName].audio.pause()
       i++;
