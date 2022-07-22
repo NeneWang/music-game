@@ -22,7 +22,7 @@ class AudioSprite {
 
     this.trackNumber = 0
     this.maxTrackNumber = 2
-    this.trackText;
+    this.textSprite;
   }
 
   leftAsToggled() {
@@ -66,15 +66,12 @@ class AudioSprite {
     this.button.on('wheel', (e) => {
       console.log(e.event.deltaY)
       // console.log("Scrolling")
-      if(e.event.deltaY > 0){
-        
+      if (e.event.deltaY > 0) {
+        this.increaseAudioTrack()
+      }else{
+        this.decreaseAudioTrack()
       }
     })
-
-    increaseAudioTrack(){
-      this.trackNumber++
-      if(this.trackNumber> )
-    }
 
 
     this.button.on('pointerup', () => {
@@ -109,6 +106,35 @@ class AudioSprite {
       this.toggleSolo()
     })
   }
+
+
+  increaseAudioTrack(){
+    this.trackNumber++
+    this.confineTrack()
+    this.updateTrack(this.trackNumber)
+    
+  }
+
+  decreaseAudioTrack(){
+    this.trackNumber--
+    this.confineTrack()
+    this.updateTrack(this.trackNumber)
+  }
+
+  confineTrack(){
+    if (this.trackNumber > this.maxTrackNumber) {
+      this.trackNumber = 0
+    }
+    else if (this.trackNumber < 0){
+      this.trackNumber = this.maxTrackNumber
+    }
+  }
+
+  updateTrack(newText){
+    // console.log(this.textSprite)
+    this.textSprite.setText(newText)
+  }
+
 
   mute() {
     console.log(this.title, "muted")
@@ -161,7 +187,7 @@ class AudioSprite {
 
     if (this.toggled) {
       this.audio.resume();
-      if(this.audio.mute){
+      if (this.audio.mute) {
         this.audio.mute = false
         this.unSoloAll()
       }
