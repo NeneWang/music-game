@@ -137,6 +137,10 @@ class AudioSprite {
     }
   }
 
+  playEveryBar(){
+    this.audio.play()
+  }
+
   updateTrackWithName(){
     // console.log(this.audioList.key)
     this.updateTrack(`${this.trackNumber} ${this.audioList[this.trackNumber-1].key}`)
