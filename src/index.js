@@ -3,14 +3,13 @@ import Phaser from "phaser";
 import AudioSprite from "./AudioSprite";
 
 class Example extends Phaser.Scene {
+
   constructor() {
     super();
 
     this.trackSprites = [];
-    
-    this.triggerTimer = this.time.addEvent({
-      
-    })
+    this.BARLENGTH=2.7273
+
 
   }
 
@@ -75,6 +74,7 @@ class Example extends Phaser.Scene {
   create() {
     let wav1 = this.sound.add("wav1", { loop: true })
 
+
     const musicMap =
     {
       "wav1": this.sound.add("wav1", { loop: true }),
@@ -136,10 +136,10 @@ class Example extends Phaser.Scene {
 
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
 
-      
+
 
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
-      
+
       this.trackSprites[spriteName].audioList = SquareSongTileMap[spriteName].map(track => this.sound.add(track, { loop: true }),)
       // console.log(this.trackSprites[spriteName].audioList[0])
 
@@ -155,6 +155,22 @@ class Example extends Phaser.Scene {
     }
 
     this.createTrackSprites()
+
+
+    // Activating the BPMS
+    this.triggerTimer = this.time.addEvent({
+      callback: () => this.triggerEveryAudioSprite(),
+      callbackScope: this,
+      delay: this.BARLENGTH*1000, // 1000 = 1 second
+      loop: true
+    })
+  }
+
+  triggerEveryAudioSprite(){
+    this.trackSprites.forEach(t => {
+      console.log(t)
+      t.playEveryBar()
+    })
   }
 
   createTrackSprites() {
