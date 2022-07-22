@@ -21,7 +21,6 @@ main: build-commit ft-push
 
 build-commit:
 	npm run build
-	npm run export
 	git add --all
 	git commit -m "Production update | ${v}"	
 	git push origin HEAD
