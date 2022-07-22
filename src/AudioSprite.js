@@ -21,7 +21,7 @@ class AudioSprite {
     this.muteAll
     this.unSoloAll
 
-    this.trackNumber = 0
+    this.trackNumber = 1
     this.maxTrackNumber = 2
     this.textSprite;
   }
@@ -112,21 +112,26 @@ class AudioSprite {
   increaseAudioTrack(){
     this.trackNumber++
     this.confineTrack()
-    this.updateTrack(this.trackNumber)
+    this.updateTrackWithName()
     
   }
 
   decreaseAudioTrack(){
     this.trackNumber--
     this.confineTrack()
-    this.updateTrack(this.trackNumber)
+    this.updateTrackWithName()
+  }
+
+  updateTrackWithName(){
+    console.log(this.audioList.key)
+    this.updateTrack(`${this.trackNumber} ${this.audioList[this.trackNumber-1].key}`)
   }
 
   confineTrack(){
     if (this.trackNumber > this.maxTrackNumber) {
-      this.trackNumber = 0
+      this.trackNumber = 1
     }
-    else if (this.trackNumber < 0){
+    else if (this.trackNumber < 1){
       this.trackNumber = this.maxTrackNumber
     }
   }

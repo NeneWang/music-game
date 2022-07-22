@@ -137,7 +137,8 @@ class Example extends Phaser.Scene {
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
       
       this.trackSprites[spriteName].audioList = SquareSongTileMap[spriteName].map(track => this.sound.add(track, { loop: true }),)
-      console.log(this.trackSprites[spriteName].audioList[0])
+      // console.log(this.trackSprites[spriteName].audioList[0])
+      this.trackSprites[spriteName].maxTrackNumber = this.trackSprites[spriteName].audioList.length
       this.trackSprites[spriteName].textSprite = this.add.text(config.width / division * (i % division), (Math.floor(i / division)) * (config.height - 200) / division, this.trackSprites[spriteName].trackNumber)
       this.trackSprites[spriteName].audio = this.trackSprites[spriteName].audioList[0]
       this.trackSprites[spriteName].audio.play()
