@@ -66,8 +66,6 @@ class Example extends Phaser.Scene {
     this.load.audio("SUPPORTTHEARTIST", ["assets/gms/audio/SUPPORTTHEARTIST.wav"])
     this.load.audio("ZSHUMPDUMPDANUMP", ["assets/gms/audio/ZSHUMPDUMPDANUMP.wav"])
 
-
-
   }
 
   create() {
@@ -84,6 +82,28 @@ class Example extends Phaser.Scene {
       "wav7": this.sound.add("wav6", { loop: true }),
       "wav8": this.sound.add("wav7", { loop: true }),
       "wav9": this.sound.add("wav8", { loop: true }),
+
+
+      "BAD": this.sound.add("BAD", { loop: true }),
+      "CHORUS1": this.sound.add("CHORUS1", { loop: true }),
+      "HEY": this.sound.add("HEY", { loop: true }),
+      "HORN1": this.sound.add("HORN1", { loop: true }),
+      "HORN2": this.sound.add("HORN2", { loop: true }),
+      "HORNSTOGETHER": this.sound.add("HORNSTOGETHER", { loop: true }),
+      "HSDROPOUT": this.sound.add("HSDROPOUT", { loop: true }),
+      "ITEACH": this.sound.add("ITEACH", { loop: true }),
+      "ITHOUGHT": this.sound.add("ITHOUGHT", { loop: true }),
+      "KEYBOARD1": this.sound.add("KEYBOARD1", { loop: true }),
+      "LETGRAP": this.sound.add("LETGRAP", { loop: true }),
+      "Pushup": this.sound.add("Pushup", { loop: true }),
+      "SNARE1": this.sound.add("SNARE1", { loop: true }),
+      "SNARE2": this.sound.add("SNARE2", { loop: true }),
+      "SNARE3": this.sound.add("SNARE3", { loop: true }),
+      "SNARECOMBO2": this.sound.add("SNARECOMBO2", { loop: true }),
+      "SNAREHATCOMBO1": this.sound.add("SNAREHATCOMBO1", { loop: true }),
+      "SOMEOFYOUSWEARWHATIMSPITTIN": this.sound.add("SOMEOFYOUSWEARWHATIMSPITTIN", { loop: true }),
+      "SUPPORTTHEARTIST": this.sound.add("SUPPORTTHEARTIST", { loop: true }),
+      "ZSHUMPDUMPDANUMP": this.sound.add("ZSHUMPDUMPDANUMP", { loop: true }),
     }
 
 
@@ -97,13 +117,13 @@ class Example extends Phaser.Scene {
         continue;
       }
 
-      
+
       const button = this.makeButton(spriteName, config.width / division * (i % division + 1 / 2), (Math.floor(i / division) + .5) * (config.height - 200) / division);
 
-      
+
 
       this.trackSprites[spriteName] = new AudioSprite(spriteName, button)
-      this.trackSprites[spriteName].textSprite = this.add.text(config.width / division * (i % division),  (Math.floor(i/ division) ) * (config.height -200) /division, this.trackSprites[spriteName].trackNumber ) 
+      this.trackSprites[spriteName].textSprite = this.add.text(config.width / division * (i % division), (Math.floor(i / division)) * (config.height - 200) / division, this.trackSprites[spriteName].trackNumber)
       this.trackSprites[spriteName].audio = musicMap[this.trackSprites[spriteName].audioName]
       this.trackSprites[spriteName].audio.play()
       this.trackSprites[spriteName].audio.pause()
@@ -130,7 +150,7 @@ class Example extends Phaser.Scene {
       trackSprite.setButtonFrame = this.setButtonFrame
       trackSprite.setMuteFrame = this.setMuteFrame
       trackSprite.setSoloFrame = this.setSoloFrame
-      
+
       trackSprite.updateVisualAllMusicFrames = () => this.updateVisualAllMusicFrames
 
       trackSprite.muteAll = () => {
@@ -180,13 +200,13 @@ class Example extends Phaser.Scene {
   unSoloAll() {
     const trackSprites = this.trackSprites
     for (let idx in trackSprites) {
-      
+
       const trackSprite = trackSprites[idx]
       this.setSoloFrame(trackSprite.soloBtn, 1)
     }
   }
 
-  updateVisualAllMusicFrames(){
+  updateVisualAllMusicFrames() {
     const trackSprite = this.trackSprites
     for (let idx in trackSprites) {
       trackSprite[idx].updateVisuals()
