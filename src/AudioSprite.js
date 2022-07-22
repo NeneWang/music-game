@@ -126,9 +126,9 @@ class AudioSprite {
 
   changeAudioTrack(trackNum){
     
-    if(this.toggled){
-      this.audio.pause()
-    }
+    // if(this.toggled){
+    //   this.audio.pause()
+    // }
     this.audio = this.audioList[trackNum]
     
   }
