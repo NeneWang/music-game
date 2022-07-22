@@ -19,6 +19,9 @@ class AudioSprite {
     this.setSoloFrame
     this.muteAll
     this.unSoloAll
+
+    this.trackNumber = 0
+    this.trackText;
   }
 
   leftAsToggled() {
@@ -59,8 +62,9 @@ class AudioSprite {
 
     })
 
-    this.button.on('wheel', () => {
-      console.log("Scrolling")
+    this.button.on('wheel', (e) => {
+      console.log(e.event.deltaY)
+      // console.log("Scrolling")
     })
 
 
