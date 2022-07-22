@@ -106,6 +106,18 @@ class Example extends Phaser.Scene {
       "ZSHUMPDUMPDANUMP": this.sound.add("ZSHUMPDUMPDANUMP", { loop: true }),
     }
 
+    const SquareSongTileMap = {
+      "1": ["HSDROPOUT", "ITEACH"],
+      "2": ["HORN1", "HORN2", "HORNSTOGETHER"],
+      "3": ["KICKS1"],
+      "4": ["SOMEOFYOUSWEARWHATIMSPITTIN", "ITHOUGHT", "LETGRAP"],
+      "5": ["SNARECOMBO2", "SNAREHATCOMBO1"],
+      "6": ["ZSHUMPDUMPDANUMP", "CHORUS1"],
+      "7": ["Pushup", "SUPPORTTHEARTIST", "BAD"],
+      "8": ["HEY", "keyboard"],
+      "9": ["SNARE1", "SNARE2", "SNARE3"]
+    }
+
 
     const spritemap = this.cache.json.get('sfx').spritemap;
 
