@@ -136,6 +136,8 @@ class AudioSprite {
   playEveryBar(){
     if(this.toggled){
       this.audio.play()
+    }else{
+      this.audio.pause()
     }
   }
 

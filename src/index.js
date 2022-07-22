@@ -168,7 +168,7 @@ class Example extends Phaser.Scene {
 
   triggerEveryAudioSprite(){
     this.trackSprites.forEach(t => {
-      console.log(t)
+      
       t.playEveryBar()
     })
   }
