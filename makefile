@@ -34,7 +34,9 @@ build-commit-donpush:
 	git commit -m "Production update "
 
 cap:
-	git coa "${m}"
+
+	git add --all
+	git commit -m "${m}"
 	git poh
 
 merp:
