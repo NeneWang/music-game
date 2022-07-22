@@ -43,6 +43,31 @@ class Example extends Phaser.Scene {
     this.load.audio("wav7", ["assets/gms/audio/7.wav"])
     this.load.audio("wav8", ["assets/gms/audio/8.wav"])
     this.load.audio("wav9", ["assets/gms/audio/9.wav"])
+
+    this.load.audio("BAD", ["assets/gms/audio/BAD.wav"])
+    this.load.audio("CHORUS1", ["assets/gms/audio/CHORUS1.wav"])
+    this.load.audio("HEY", ["assets/gms/audio/HEY.wav"])
+    this.load.audio("HORN1", ["assets/gms/audio/HORN1.wav"])
+    this.load.audio("HORN2", ["assets/gms/audio/HORN2.wav"])
+    this.load.audio("HORNSTOGETHER", ["assets/gms/audio/HORNSTOGETHER.wav"])
+    this.load.audio("HSDROPOUT", ["assets/gms/audio/HSDROPOUT.wav"])
+    this.load.audio("ITEACH", ["assets/gms/audio/ITEACH.wav"])
+    this.load.audio("ITHOUGHT", ["assets/gms/audio/ITHOUGHT.wav"])
+    this.load.audio("KEYBOARD1", ["assets/gms/audio/KEYBOARD1.wav"])
+    this.load.audio("KICKS1", ["assets/gms/audio/KICKS1.wav"])
+    this.load.audio("LETGRAP", ["assets/gms/audio/LETGRAP.wav"])
+    this.load.audio("Pushup", ["assets/gms/audio/Pushup.wav"])
+    this.load.audio("SNARE1", ["assets/gms/audio/SNARE1.wav"])
+    this.load.audio("SNARE2", ["assets/gms/audio/SNARE2.wav"])
+    this.load.audio("SNARE3", ["assets/gms/audio/SNARE3.wav"])
+    this.load.audio("SNARECOMBO2", ["assets/gms/audio/SNARECOMBO2.wav"])
+    this.load.audio("SNAREHATCOMBO1", ["assets/gms/audio/SNAREHATCOMBO1.wav"])
+    this.load.audio("SOMEOFYOUSWEARWHATIMSPITTIN", ["assets/gms/audio/SOMEOFYOUSWEARWHATIMSPITTIN.wav"])
+    this.load.audio("SUPPORTTHEARTIST", ["assets/gms/audio/SUPPORTTHEARTIST.wav"])
+    this.load.audio("ZSHUMPDUMPDANUMP", ["assets/gms/audio/ZSHUMPDUMPDANUMP.wav"])
+
+
+
   }
 
   create() {

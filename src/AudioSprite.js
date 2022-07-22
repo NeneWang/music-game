@@ -44,7 +44,7 @@ class AudioSprite {
       // this.leftAsToggled()
 
 
-      // console.log("POinterout button")
+      
     })
 
     this.button.on('pointerout', () => {
@@ -64,8 +64,8 @@ class AudioSprite {
     })
 
     this.button.on('wheel', (e) => {
-      console.log(e.event.deltaY)
-      // console.log("Scrolling")
+      
+      
       if (e.event.deltaY > 0) {
         this.increaseAudioTrack()
       }else{
@@ -87,11 +87,11 @@ class AudioSprite {
     });
 
 
-    console.log("Setting buttons finished ")
+    
   }
 
   showSmallSpriteX() {
-    // console.log(x)
+    
     this.smallSprite.visible = true;
     this.muteBtn.visible = true;
     this.soloBtn.visible = true;
@@ -131,13 +131,13 @@ class AudioSprite {
   }
 
   updateTrack(newText){
-    // console.log(this.textSprite)
+    
     this.textSprite.setText(newText)
   }
 
 
   mute() {
-    console.log(this.title, "muted")
+    
     this.audio.mute = true;
     this.updateVisuals()
     this.unSoloAll()
@@ -181,7 +181,7 @@ class AudioSprite {
   handleMusicSpriteClick() {
     this.setButtonFrame(this.button, 2);
 
-    console.log(this.trackSpritesRef);
+    
 
     this.toggled = !this.toggled;
 
