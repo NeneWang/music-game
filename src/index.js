@@ -149,6 +149,7 @@ class Example extends Phaser.Scene {
       });
       this.trackSprites[spriteName].maxTrackNumber = this.trackSprites[spriteName].audioList.length
       this.trackSprites[spriteName].textSprite = this.add.text(config.width / division * (i % division), (Math.floor(i / division)) * (config.height - 200) / division, this.trackSprites[spriteName].trackNumber)
+      this.trackSprites[spriteName].textSprite.visible = false
       this.trackSprites[spriteName].updateTrackWithName()
       this.trackSprites[spriteName].audio = this.trackSprites[spriteName].audioList[0]
       i++;

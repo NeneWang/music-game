@@ -42,6 +42,7 @@ class AudioSprite {
       // this.setButtonFrame(this, 1);
 
       this.setButtonFrame(this.button, 0)
+      this.textSprite.visible =true
       // this.leftAsToggled()
 
 
@@ -52,6 +53,7 @@ class AudioSprite {
 
       this.setButtonFrame(this.button, 1);
       this.leftAsToggled()
+      this.textSprite.visible = false
 
 
 
