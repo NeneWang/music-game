@@ -21,6 +21,7 @@ class AudioSprite {
     this.unSoloAll
 
     this.trackNumber = 0
+    this.maxTrackNumber = 2
     this.trackText;
   }
 
@@ -65,7 +66,15 @@ class AudioSprite {
     this.button.on('wheel', (e) => {
       console.log(e.event.deltaY)
       // console.log("Scrolling")
+      if(e.event.deltaY > 0){
+        
+      }
     })
+
+    increaseAudioTrack(){
+      this.trackNumber++
+      if(this.trackNumber> )
+    }
 
 
     this.button.on('pointerup', () => {
