@@ -131,14 +131,12 @@ class AudioSprite {
     }
     this.audio = this.audioList[trackNum]
     
-    if(this.toggled){
-      console.log(this.audio.key)
-      this.audio.resume()
-    }
   }
 
   playEveryBar(){
-    this.audio.play()
+    if(this.toggled){
+      this.audio.play()
+    }
   }
 
   updateTrackWithName(){
@@ -211,7 +209,6 @@ class AudioSprite {
     this.toggled = !this.toggled;
 
     if (this.toggled) {
-      this.audio.resume();
       if (this.audio.mute) {
         this.audio.mute = false
         this.unSoloAll()

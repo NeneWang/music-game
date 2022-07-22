@@ -7,6 +7,10 @@ class Example extends Phaser.Scene {
     super();
 
     this.trackSprites = [];
+    
+    this.triggerTimer = this.time.addEvent({
+      
+    })
 
   }
 
