@@ -126,9 +126,10 @@ class AudioSprite {
 
   changeAudioTrack(trackNum){
     
-    // if(this.toggled){
-    //   this.audio.pause()
-    // }
+    if(this.toggled){
+      // this.audio.pause()
+      this.audio.loop=false
+    }
     this.audio = this.audioList[trackNum]
     
   }
@@ -136,8 +137,7 @@ class AudioSprite {
   playEveryBar(){
     if(this.toggled){
       this.audio.play()
-    }else{
-      this.audio.pause()
+      
     }
   }
 
