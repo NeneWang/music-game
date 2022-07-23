@@ -14,10 +14,7 @@ THIS_BRANCH=master
 MASTER_BRANCH=master
 DEPLOY_BRANCH=deployment
 
-
-
 main: build-commit ft-push
-
 
 build-commit:
 	npm run build
